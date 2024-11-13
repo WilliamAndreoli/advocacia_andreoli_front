@@ -7,10 +7,10 @@
                 <div>
                     <h2 class="mb-3">Login</h2>
                 </div>
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="loginForm">
                     <div>
                       <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" class="form-control mb-2" id="exampleInputEmail1" placeholder="exemplo@email.com" aria-describedby="emailHelp" formControlName="email">
+                      <input type="email" class="form-control mb-2" id="exampleInputEmail1" placeholder="exemplo@email.com" aria-describedby="emailHelp" formControlName="userName">
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Senha</label>
