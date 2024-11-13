@@ -3,4 +3,15 @@
     height: 350px;
     background-color: #EDEDED;
     border-radius: 8px;
+
+    .btn-warning {
+        background-color: #C5A00E;
+        box-shadow: 0px 2px 8px #C5A00E;
+        border-color: #C5A00E;
+    }
+
+    .btn-warning:active {
+        background-color: #9B7E09; /* Cor ao pressionar */
+      }
+
 }
