@@ -7,17 +7,20 @@
                 <div>
                     <h2 class="mb-3">Login</h2>
                 </div>
-                <form [formGroup]="loginForm">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div>
                       <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="exemplo@email.com" aria-describedby="emailHelp">
+                      <input type="email" class="form-control mb-2" id="exampleInputEmail1" placeholder="exemplo@email.com" aria-describedby="emailHelp" formControlName="email">
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Senha</label>
-                      <input type="password" placeholder="Entre com sua senha" class="form-control" id="exampleInputPassword1">
+                      <input type="password" placeholder="Entre com sua senha" class="form-control mb-2" id="exampleInputPassword1" formControlName="password">
+                    </div>
+                    <div class="esqueceuSenha">
+                        <span><a href="">Esqueceu sua senha?</a></span>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-warning">Logar</button>
+                        <button type="submit" class="btn btn-warning" (click)="onSubmit()">Logar</button>
                     </div>
                   </form>
             </div>

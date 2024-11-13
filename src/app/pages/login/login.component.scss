@@ -14,4 +14,16 @@
         background-color: #9B7E09; /* Cor ao pressionar */
       }
 
+    .esqueceuSenha {
+        display: flex;
+        justify-content: end;
+        margin-bottom: 8px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #868585;
+        font-size: 15px;
+    }
+
 }

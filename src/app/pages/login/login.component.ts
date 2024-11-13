@@ -21,4 +21,11 @@ export class LoginComponent {
     })
   }
 
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Formulário enviado:', this.loginForm.value);
+    } else {
+      console.log('Formulário inválido');
+    }
+  }
 }
