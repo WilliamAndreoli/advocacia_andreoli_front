@@ -4,11 +4,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginLayoutComponent } from '../../login-layout/login-layout.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [DefaultLayoutComponent, ReactiveFormsModule],
+  imports: [LoginLayoutComponent, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [
