@@ -17,7 +17,6 @@ export class LoginService {
       tap((value) => {
         sessionStorage.setItem("auth-token", value.token)
         sessionStorage.setItem("userName", value.name)
-        console.log("Token JWT armazenado:", value.token)
       })
     )
   }

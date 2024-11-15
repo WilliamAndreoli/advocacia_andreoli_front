@@ -1,0 +1,29 @@
+#atuacao {
+    margin-top: 35px;
+    border-bottom: 1px solid #ffd82f;
+    padding-bottom: 35px;
+
+    h1 {
+        color: white;
+        font-family: 'Cinzel';
+        text-transform: uppercase;
+        justify-self: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: #ffd82f;
+        text-transform: uppercase;
+        font-size: 1.7em;
+    }
+
+    a:hover {
+        color: white;
+    }
+
+    .link {
+        font-family: 'Cinzel';
+    }
+
+}
+

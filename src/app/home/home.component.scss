@@ -1,0 +1,22 @@
+#home {
+    height: 100vh;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 40px;
+    border-bottom: 1px solid #ffd82f;
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+}
+
+.bg-preto {
+    background-color: black;
+}
+
+.text-dourado {
+    color: #ffd82f;
+}

@@ -1,0 +1,27 @@
+#acesso {
+    margin-top: 35px;
+    border-bottom: 1px solid #ffd82f;
+    padding-bottom: 35px;
+    align-items: center;
+
+    ul {
+        list-style: none;
+    }
+
+    h6 {
+        color: #ffd82f;
+        font-size: 1.1em;
+        text-transform: uppercase;
+    }
+
+    .nav-link {
+        color: #ffd82f;
+        text-transform: uppercase;
+        font-family: Cinzel;
+    }
+
+    .nav-link:hover {
+        color: white;
+    }
+
+}
