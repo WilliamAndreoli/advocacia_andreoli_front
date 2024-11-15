@@ -21,5 +21,5 @@ import { RodapeComponent } from '../rodape/rodape.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+  
 }

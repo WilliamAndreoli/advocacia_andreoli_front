@@ -8,21 +8,18 @@
             <div class="col-md-2 ml-auto">
                 <h6>Acesso Rápido</h6>
                 <ul>
-                    <li class="nav-item">
-                        <a href="" class="nav-link mt-4">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#sobre" class="nav-link mt-2">Sobre</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#atuacao" class="nav-link mt-2">Atuação</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#profissional" class="nav-link mt-2">Profissional</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#contato" class="nav-link mt-2">Contato</a>
-                      </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link mt-4" (click)="scrollTo($event, 'home')">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link mt-2" (click)="scrollTo($event, 'atuacao')">Atuação</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link mt-2" (click)="scrollTo($event, 'profissional')">Profissional</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link mt-2" (click)="scrollTo($event, 'contato')">Contato</a>
+                  </li>
                 </ul>
             </div>
         </div>
