@@ -1,5 +1,24 @@
 @import 'ngx-toastr/toastr';
 
+/*Botão de retorno ao topo*/
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffd82f;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    display: none;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 html, body {
     font-family: Helvetica, Arial, sans-serif;
     width: 100%;
