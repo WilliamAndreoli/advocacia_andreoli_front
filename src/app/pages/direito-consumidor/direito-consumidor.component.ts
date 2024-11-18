@@ -5,19 +5,19 @@ import { RodapeComponent } from '../../rodape/rodape.component';
 import { LoginLayoutComponent } from '../../login-layout/login-layout.component';
 
 @Component({
-  selector: 'app-direito-civil',
+  selector: 'app-direito-consumidor',
   standalone: true,
   imports: [
     LoginLayoutComponent,
-    DireitoCivilComponent,
+    DireitoConsumidorComponent,
     ContatoComponent,
     ContatoComponent,
     AcessoRapidoComponent,
     RodapeComponent
   ],
-  templateUrl: './direito-civil.component.html',
-  styleUrl: './direito-civil.component.scss'
+  templateUrl: './direito-consumidor.component.html',
+  styleUrl: './direito-consumidor.component.scss'
 })
-export class DireitoCivilComponent {
+export class DireitoConsumidorComponent {
 
 }

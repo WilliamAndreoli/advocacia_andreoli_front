@@ -4,17 +4,17 @@
             <div class="col-md-6">
                 <h2>Vamos resolver seu problema jurídico?</h2>
                 <div>
-                    <form id="formEmail" action="">
-                        <input name="nome" class="form-control form-control-lg mt-4" type="text" id="nome"
+                    <form [formGroup]="contatoForm" (ngSubmit)="onSubmit()">
+                        <input formControlName="nome" class="form-control form-control-lg mt-4" type="text"
                             placeholder="Digite seu nome completo">
 
-                        <input name="email" class="form-control form-control-lg mt-3" type="email" id="email"
+                        <input formControlName="email" class="form-control form-control-lg mt-3" type="email" 
                             placeholder="Digite seu melhor e-mail">
 
-                        <input name="assunto" class="form-control form-control-lg mt-3" type="text" id="assunto" 
+                        <input formControlName="assunto" class="form-control form-control-lg mt-3" type="text" 
                             placeholder="Assunto">
 
-                        <textarea name="conteudo" class="form-control form-control-lg mt-3" type="textarea" id="projeto"
+                        <textarea formControlName="conteudo" class="form-control form-control-lg mt-3" type="textarea"
                             placeholder="Descreva um pouco sua questão..."></textarea>
 
                         <input id="btnEnvio" class="btn btn-custom mt-3" type="submit" value="Envie sua mensagem">

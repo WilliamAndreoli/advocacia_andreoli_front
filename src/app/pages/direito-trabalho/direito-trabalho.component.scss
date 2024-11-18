@@ -1,0 +1,46 @@
+#home-direito {
+    height: 100vh;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 40px;
+    border-bottom: 1px solid #ffd82f;
+
+    
+    h1 {
+        font-family: 'Cinzel';
+        font-size: 4em;
+        color: #ffd82f;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+
+}
+
+#direito-trabalho {
+    margin-top: 35px;
+    border-bottom: 1px solid #ffd82f;
+    padding-bottom: 35px;
+    color: white;
+
+    p {
+        margin-top: 10px;
+        text-align: justify;
+        font-size: 1.5em;
+    }
+
+    h2 {
+        color: #ffd82f;
+        font-family: 'Cinzel';
+        text-transform: uppercase;
+    }
+    
+    h3 {
+        color: #ffd82f;
+        font-family: 'Cinzel';
+        margin-top: 20px;
+        text-transform: uppercase;
+    }
+}

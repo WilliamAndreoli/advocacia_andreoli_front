@@ -4,20 +4,21 @@ import { AcessoRapidoComponent } from '../../acesso-rapido/acesso-rapido.compone
 import { RodapeComponent } from '../../rodape/rodape.component';
 import { LoginLayoutComponent } from '../../login-layout/login-layout.component';
 
+
 @Component({
-  selector: 'app-direito-civil',
+  selector: 'app-direito-trabalho',
   standalone: true,
   imports: [
     LoginLayoutComponent,
-    DireitoCivilComponent,
+    DireitoTrabalhoComponent,
     ContatoComponent,
     ContatoComponent,
     AcessoRapidoComponent,
     RodapeComponent
   ],
-  templateUrl: './direito-civil.component.html',
-  styleUrl: './direito-civil.component.scss'
+  templateUrl: './direito-trabalho.component.html',
+  styleUrl: './direito-trabalho.component.scss'
 })
-export class DireitoCivilComponent {
+export class DireitoTrabalhoComponent {
 
 }
