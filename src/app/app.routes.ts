@@ -5,6 +5,7 @@ import { DireitoCivilComponent } from './pages/direito-civil/direito-civil.compo
 import { DireitoTrabalhoComponent } from './pages/direito-trabalho/direito-trabalho.component';
 import { DireitoPreviComponent } from './pages/direito-previ/direito-previ.component';
 import { DireitoConsumidorComponent } from './pages/direito-consumidor/direito-consumidor.component';
+import { EsqueciMinhaSenhaComponent } from './pages/esqueci-minha-senha/esqueci-minha-senha.component';
 
 export const routes: Routes = [
     {
@@ -30,6 +31,14 @@ export const routes: Routes = [
     { 
         path: 'direito-consumidor', 
         component: DireitoConsumidorComponent 
+    },
+    { 
+        path: 'esqueci-minha-senha', 
+        component: EsqueciMinhaSenhaComponent 
+    },
+    { 
+        path: 'admin', 
+        component: HomeComponent 
     },
     { 
         path: '', 

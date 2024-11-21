@@ -1,0 +1,21 @@
+<app-login-layout></app-login-layout>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div id="box" class="col m-4 p-4">
+                <h2>Recupere sua senha</h2>
+                
+                <form [formGroup]="formEmail" (ngSubmit)="onSubmit()">
+                    <div class="mt-3">
+                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <input type="email" class="form-control mb-2" id="exampleInputEmail1" placeholder="exemplo@email.com" aria-describedby="emailHelp" formControlName="userName">
+                    </div>
+                    <div class="d-grid mt-3 gap-2">
+                        <button type="submit" class="btn btn-warning">Enviar</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
