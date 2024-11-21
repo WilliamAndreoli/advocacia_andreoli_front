@@ -8,11 +8,12 @@ import { LoginLayoutComponent } from '../../login-layout/login-layout.component'
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { LoginResponse } from '../../types/login-response.types';
+import { ContatoComponent } from '../../contato/contato.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [LoginLayoutComponent, ReactiveFormsModule],
+  imports: [LoginLayoutComponent, ReactiveFormsModule, ContatoComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [
