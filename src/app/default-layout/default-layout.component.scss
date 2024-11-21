@@ -20,6 +20,26 @@
         color: white;
     }
 
+    .btn-logout {
+        margin-left: 20px;
+        margin-top: 5px;
+        padding: 2px;
+        background-color: #C5A00E;
+        border-color: #C5A00E;
+    }
+
+    .btn-logout:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .mensagem {
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 20px;
+        font-size: 0.8em;
+    }
+
 }
 
 .text-adv {
