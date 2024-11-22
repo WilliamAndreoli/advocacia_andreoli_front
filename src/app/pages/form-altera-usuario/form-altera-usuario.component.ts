@@ -27,7 +27,7 @@ export class FormAlteraUsuarioComponent {
     private toastService: ToastrService
   ) {
     this.formAlterar = new FormGroup({
-      username: new FormControl('', Validators.email),
+      username: new FormControl(),
       name: new FormControl(),
       password: new FormControl(),
       tipoUsuario: new FormControl()
@@ -35,8 +35,7 @@ export class FormAlteraUsuarioComponent {
   }
 
   alteraUsuario() {
-    if (this.formAlterar.valid) {
-      const formValues = this.formAlterar.value;
+    const formValues = this.formAlterar.value;
 
       // Constrói o objeto tipoUsuario esperado pelo back-end
       const tipoUsuario = {
@@ -51,6 +50,8 @@ export class FormAlteraUsuarioComponent {
         name: formValues.name,
         tipoUsuario: tipoUsuario,
       };
+
+      console.log(usuario)
 
       this.usuarioService.updateUsuario(this.email, usuario).subscribe({
         next: (response) => {
@@ -74,7 +75,6 @@ export class FormAlteraUsuarioComponent {
           return throwError(() => error);
         }
       })
-    }
   }
 
   // Mapeia o tipoUsuario (ADMIN, ADVOGADO, CLIENTE) para o ID correspondente
@@ -86,6 +86,8 @@ export class FormAlteraUsuarioComponent {
         return 2;
       case 'CLIENTE':
         return 3;
+      case null:
+        return 0;
       default:
         throw new Error(`Tipo de usuário inválido: ${tipoUsuarioDescricao}`);
     }
