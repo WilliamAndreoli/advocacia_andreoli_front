@@ -12,6 +12,7 @@ import { FormAlteraUsuarioComponent } from './pages/form-altera-usuario/form-alt
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { AdvogadoComponent } from './pages/advogado/advogado.component';
 import { ClientesAdvogadoComponent } from './pages/clientes-advogado/clientes-advogado.component';
+import { FormCriaClienteComponent } from './pages/form-cria-cliente/form-cria-cliente.component';
 
 export const routes: Routes = [
     {
@@ -65,6 +66,10 @@ export const routes: Routes = [
     { 
         path: 'clientes-advogado', 
         component: ClientesAdvogadoComponent 
+    },
+    { 
+        path: 'form-cria-cliente', 
+        component: FormCriaClienteComponent 
     },
     { 
         path: '', 

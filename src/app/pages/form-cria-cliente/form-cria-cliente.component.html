@@ -1,0 +1,64 @@
+<section id="form-cliente-component">
+    <div class="container">
+        <div class="row">
+            <div class="col bg-gray">
+                <div>
+                    <h2 class="mb-3 text-light">Criar Cliente:</h2>
+                </div>
+                <form [formGroup]="clienteForm">
+                    <div>
+                        <label for="inputNome" class="form-label mt-3">Nome</label>
+                        <input type="text" class="form-control mb-2" id="inputNome" placeholder="Insira seu nome" formControlName="nome">
+                      </div>
+                    <div>
+                      <label for="inputEmail" class="form-label mt-3">Email</label>
+                      <input type="email" class="form-control mb-2" id="inputEmail" placeholder="exemplo@email.com" aria-describedby="emailHelp" formControlName="email">
+                    </div>
+                    <div>
+                        <label for="inputCpf" class="form-label mt-3">CPF</label>
+                        <input type="text" class="form-control mb-2" id="inputCpf" placeholder="XXXXXXXXXXX" formControlName="cpf">
+                    </div>
+                    <div>
+                        <label for="inputRg" class="form-label mt-3">RG</label>
+                        <input type="text" class="form-control mb-2" id="inputRg" placeholder="XXXXXXX" formControlName="rg">
+                    </div>
+                    <div>
+                        <label for="inputTelefone" class="form-label mt-3">Telefone</label>
+                        <input type="text" class="form-control mb-2" id="inputTelefone" placeholder="XXXXXXXXXXX" formControlName="telefone">
+                    </div>
+                    <div>
+                        <label for="inputEndereco" class="form-label mt-3">Endereço</label>
+                        <input type="text" class="form-control mb-2" id="inputEndereco" placeholder="Insira seu nome" formControlName="endereco">
+                    </div>
+                    <div>
+                        <label for="inputNomePai" class="form-label mt-3">Nome do Pai</label>
+                        <input type="text" class="form-control mb-2" id="inputNomePai" placeholder="Insira o nome do pai" formControlName="nomePai">
+                    </div>
+                    <div>
+                        <label for="inputNomeMae" class="form-label mt-3">Nome da Mãe</label>
+                        <input type="text" class="form-control mb-2" id="inputNomeMae" placeholder="Insira o nome da mãe" formControlName="nomeMae">
+                    </div>
+                    <div>
+                        <label for="inputCtps" class="form-label mt-3">CTPS</label>
+                        <input type="text" class="form-control mb-2" id="inputCtps" placeholder="Insira a CTPS" formControlName="ctps">
+                    </div>
+                    <div>
+                        <label for="inputCnh" class="form-label mt-3">CNH</label>
+                        <input type="text" class="form-control mb-2" id="inputNomePai" placeholder="Insira a CNH" formControlName="cnh">
+                    </div>
+                    <div>
+                        <label for="inputDataNascimento" class="form-label mt-3">Data de Nascimento</label>
+                        <input type="date" class="form-control mb-2" id="inputDataNascimento" placeholder="Insira seu nome" formControlName="dataNascimento">
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-warning" (click)="createCliente()" >Criar Usuário</button>
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <a type="submit" href="/clientes-advogado" class="btn btn-warning" >Cancelar</a>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
