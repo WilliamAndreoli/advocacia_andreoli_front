@@ -6,6 +6,7 @@ import { DireitoTrabalhoComponent } from './pages/direito-trabalho/direito-traba
 import { DireitoPreviComponent } from './pages/direito-previ/direito-previ.component';
 import { DireitoConsumidorComponent } from './pages/direito-consumidor/direito-consumidor.component';
 import { EsqueciMinhaSenhaComponent } from './pages/esqueci-minha-senha/esqueci-minha-senha.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 export const routes: Routes = [
     {
@@ -38,7 +39,7 @@ export const routes: Routes = [
     },
     { 
         path: 'admin', 
-        component: HomeComponent 
+        component: AdminComponent 
     },
     { 
         path: '', 
