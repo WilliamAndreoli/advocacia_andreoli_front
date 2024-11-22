@@ -4,6 +4,9 @@ import { Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TipoUsuario } from '../../interfaces/tipoUsuario';
+import { ToastrService } from 'ngx-toastr';
+import { ErrorResponse } from '../../types/error-response.type';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-criar-usuario',
@@ -21,7 +24,8 @@ export class CriarUsuarioComponent {
   usuarioForm!: FormGroup;
 
   constructor(
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private toastService: ToastrService
   ) {
       this.usuarioForm = new FormGroup({
         username: new FormControl('', [Validators.required, Validators.email]),
@@ -53,13 +57,25 @@ export class CriarUsuarioComponent {
       // Chama o serviço para criar o usuário
     this.usuarioService.createUsuario(usuario).subscribe({
       next: (response) => {
-        console.log('Usuário criado com sucesso:', response);
-        alert('Usuário criado com sucesso!');
+        //console.log('Usuário criado com sucesso:', response);
+        this.toastService.success('Usuário criado com sucesso!');
         this.usuarioForm.reset(); // Limpa o formulário
       },
-      error: (err) => {
-        console.error('Erro ao criar usuário:', err);
-        alert('Erro ao criar usuário. Tente novamente.');
+      error: (error) => {
+        let errorMessage = 'Erro ao realizar login'
+
+        if (error.error) {
+          const errorResponse = error.error as ErrorResponse;
+
+          switch(error.status) {
+            case 401:
+              errorMessage = errorResponse.message || 'Dados inválidos';
+              break;
+          }
+        }
+
+        this.toastService.error(errorMessage);
+        return throwError(() => error);
       },
     });
   } else {

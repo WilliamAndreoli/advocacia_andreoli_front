@@ -34,10 +34,6 @@ export class AdminComponent implements OnInit{
     });
   }
 
-  criarUsuario() {
-    console.log("Criar Usuario")
-  }
-
   editarUsuario(usuario: Usuario) {
     console.log("editar usuario")
   }
