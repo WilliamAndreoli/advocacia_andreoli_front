@@ -6,6 +6,7 @@ import { NotExpr } from '@angular/compiler';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin',
@@ -27,6 +28,7 @@ export class AdminComponent implements OnInit{
   constructor(
     private usuarioService: UsuarioService,
     private http: HttpClient,
+    private toastService: ToastrService,
     private router: Router
   ) {
     this.pesquisarForm = new FormGroup({
@@ -77,7 +79,12 @@ export class AdminComponent implements OnInit{
   }
 
   excluirUsuario(usuario: Usuario) {
-    console.log("Excluir usuario")
+    this.usuarioService.alteraStatus(usuario.username, usuario).subscribe({
+      next: (response) => {
+        this.toastService.success("Status de Usuário alterado para INATIVO")
+        this.carregarUsuarios()
+      }
+    })
   }
 
 }

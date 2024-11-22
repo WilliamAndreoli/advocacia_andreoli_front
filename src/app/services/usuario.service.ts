@@ -48,4 +48,19 @@ export class UsuarioService {
     const headers = this.getHeaders();
     return this.HttpClient.put<Usuario>(`${this.apiUrl}/username/${username}`, usuario, { headers });
   }
+
+  alteraStatus(username: string, usuario: any) {
+    const headers = this.getHeaders();
+    if (usuario.status == "ATIVO") {
+      console.log("Entrou no if")
+      console.log(`${this.apiUrl}/status/${username}`)
+      usuario.status = "INATIVO"
+      console.log(usuario.status)
+      return this.HttpClient.put<Usuario>(`${this.apiUrl}/status/${username}`, usuario, { headers })
+    } else {
+      return this.HttpClient.put<Usuario>(`${this.apiUrl}/status/${username}`, usuario, { headers })
+    }
+
+    
+  }
 }
