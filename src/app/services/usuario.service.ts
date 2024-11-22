@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
+import { TipoUsuario } from '../interfaces/tipoUsuario';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,17 @@ export class UsuarioService {
     );
   }
 
-  updateUsuario(id: number, usuario: Usuario): Observable<Usuario> {
+  createUsuario(usuario: any): Observable<Usuario> {
+    console.log("Entrou create usuario")
     const headers = this.getHeaders();
-    return this.HttpClient.put<Usuario>(`${this.apiUrl}/${id}`, usuario, { headers });
+
+    console.log(usuario.userName)
+
+    return this.HttpClient.post<Usuario>(this.apiUrl, usuario, { headers });
+  }
+
+  updateUsuario(username: string, usuario: Usuario): Observable<Usuario> {
+    const headers = this.getHeaders();
+    return this.HttpClient.put<Usuario>(`${this.apiUrl}/${username}`, usuario, { headers });
   }
 }

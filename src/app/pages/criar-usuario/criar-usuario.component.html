@@ -1,0 +1,42 @@
+<section id="criar-usuario">
+    <div class="container">
+        <div class="row">
+            <div id="usuarioContainer" class="col-md-12">
+                <div>
+                    <h2 class="mb-3 text-dark">Criar Usuário:</h2>
+                </div>
+                <form [formGroup]="usuarioForm">
+                    <div>
+                      <label for="inputUserName" class="form-label mt-3">Email</label>
+                      <input type="email" class="form-control mb-2" id="inputUserName" placeholder="exemplo@email.com" aria-describedby="emailHelp" formControlName="username">
+                    </div>
+                    <div>
+                        <label for="inputNome" class="form-label mt-3">Nome</label>
+                        <input type="text" class="form-control mb-2" id="inputNome" placeholder="Insira seu nome" formControlName="name">
+                      </div>
+                    <div class="mb-3">
+                      <label for="inputPassword" class="form-label mt-3">Senha</label>
+                      <input type="password" placeholder="Entre com sua senha" class="form-control mb-2" id="inputPassword" formControlName="password">
+                    </div>
+                    <div>
+                        <div>
+                            <label for="inputTipo" class="form-label mt-3">Tipo:</label>
+                        </div>
+                        
+                        <select class="form-control" id="inputTipo" formControlName="tipoUsuario" required>
+                            <option value="ADMIN">Administrador</option>
+                            <option value="ADVOGADO">Advogado</option>
+                            <option value="CLIENTE">Cliente</option>
+                        </select>
+                      </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-warning" (click)="onSubmit()">Criar Usuário</button>
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <a type="submit" href="/admin" class="btn btn-warning" >Cancelar</a>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>

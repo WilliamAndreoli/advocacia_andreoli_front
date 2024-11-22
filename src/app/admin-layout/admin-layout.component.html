@@ -1,0 +1,48 @@
+<header>
+    <section id="menu">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark"
+        style="border-bottom: 1px solid #ffd82f; box-shadow: 0px 0px 30px #ff932f;">
+            <div class="container-fluid">
+              
+                <a class="navbar-brand" href="#">
+                    <img src="/img/logo.svg">
+                </a>
+
+              <div class="navbar-text text-adv">
+                <h2 id="h2-menu">Advocacia Andreoli</h2>
+              </div> 
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/index">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
+                  </li>
+                  @if (token == null) {
+                    <li class="nav-item">
+                      <a type="button" class="btn btn-warning text-uppercase" href="/login">Login</a>
+                    </li>
+                  }
+                  @else {
+                    <li class="nav-item">
+                      <div class="text-adv mensagem">Bem vindo</div>  
+                    </li>
+                    <li class="nav-item">
+                      <a type="button" (click)="logout()" class="btn btn-logout text-uppercase">Sair</a>
+                    </li>
+                  }
+                  
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+    </section>
+</header>
+
+

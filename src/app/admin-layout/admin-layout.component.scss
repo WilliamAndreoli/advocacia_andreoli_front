@@ -1,0 +1,56 @@
+#menu {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    font-family: Cinzel;
+    text-transform: uppercase;
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-warning {
+        margin-left: 30px;
+        background-color: #C5A00E;
+        border-color: #C5A00E;
+    }
+
+    .btn-warning:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .btn-logout {
+        margin-left: 20px;
+        margin-top: 5px;
+        padding: 2px;
+        background-color: #C5A00E;
+        border-color: #C5A00E;
+    }
+
+    .btn-logout:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .mensagem {
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 20px;
+        font-size: 0.8em;
+    }
+
+}
+
+.text-adv {
+    color: #C5A00E;
+}
+
+.nav-link.active {
+    color: #C5A00E;
+    margin-left: 30px;
+}
+
+.nav-link.active:hover {
+    color: white;
+}

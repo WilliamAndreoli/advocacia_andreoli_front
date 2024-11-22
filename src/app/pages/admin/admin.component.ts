@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DefaultLayoutComponent } from '../../default-layout/default-layout.component';
+import { AdminLayoutComponent } from '../../admin-layout/admin-layout.component';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/usuario';
 
@@ -7,7 +7,7 @@ import { Usuario } from '../../interfaces/usuario';
   selector: 'app-admin',
   standalone: true,
   imports: [
-    DefaultLayoutComponent
+    AdminLayoutComponent
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
@@ -33,4 +33,17 @@ export class AdminComponent implements OnInit{
       }
     });
   }
+
+  criarUsuario() {
+    console.log("Criar Usuario")
+  }
+
+  editarUsuario(usuario: Usuario) {
+    console.log("editar usuario")
+  }
+
+  excluirUsuario(usuario: Usuario) {
+    console.log("Excluir usuario")
+  }
+
 }

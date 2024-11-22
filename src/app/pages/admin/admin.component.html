@@ -1,4 +1,4 @@
-<app-default-layout></app-default-layout>
+<app-admin-layout></app-admin-layout>
 <section>
     <div class="container">
         <div class="row">
@@ -23,10 +23,11 @@
                             <thead>
                               <tr class="tabelaTitulo">
                                 <th>ID</th>
-                                <th>Nome de Usuário</th>
+                                <th>Email</th>
                                 <th>Nome</th>
                                 <th>Status</th>
                                 <th>Tipo</th>
+                                <th>Opções</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -37,10 +38,10 @@
                                         <td class="tabelaUsuario">{{usuario.name}}</td>
                                         <td class="tabelaUsuario">{{usuario.status}}</td>
                                         <td class="tabelaUsuario">{{usuario.tipoUsuario.descricao}}</td>
-                                        <!--<td>
-                                          <button (click)="editarUsuario(usuario)">Editar</button>
-                                          <button (click)="excluirUsuario(usuario.id)">Excluir</button>
-                                        </td>-->
+                                        <td class="tabelaBotoes">
+                                          <button (click)="editarUsuario(usuario)" class="btn btn-primary btn-sm mt-3">Editar</button>
+                                          <button (click)="excluirUsuario(usuario)" class="btn btn-danger btn-sm mt-3 mb-2">Excluir</button>
+                                        </td>
                                       </tr>
                                 }
                             </tbody>
@@ -58,11 +59,7 @@
 
             <div class="col-md-4 box-botoes">
                 
-                <div class="mt-3"><a type="button" class="btn btn-warning">Criar Cliente</a></div>
-
-                <div class="mt-3"><a type="button" class="btn btn-warning">Criar Advogado</a></div>
-                
-                <div class="mt-3"><a type="button" class="btn btn-warning">Alterar Usuário</a></div>
+                <div class="mt-3"><a type="button" href="/criar-usuario" class="btn btn-warning">Criar Usuário</a></div>               
                 
             </div>
         </div>
