@@ -54,7 +54,7 @@ export class LoginComponent {
           
           const authToken = response.token
 
-          const name = sessionStorage.getItem("userName")
+          const username = sessionStorage.getItem("userName")
 
           //console.log(name)
 

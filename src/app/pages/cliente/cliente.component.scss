@@ -1,0 +1,29 @@
+#cliente-component {
+    .col {
+        padding: 20px;
+    }
+
+    h4 {
+        font-size: medium;
+    }
+
+    .bg-gray {
+        background-color: #d5d5d5;
+    }
+
+    .lista-processos {
+        margin-top: 20px;
+    }
+
+    .list-group-item {
+        background-color: black;
+        border: #ffd82f solid 2px;
+        color: white;
+    }
+
+    .list-group-item:hover {
+        background-color: #ffd82f;
+        color: black;
+    }
+
+}

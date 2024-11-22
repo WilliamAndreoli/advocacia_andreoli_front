@@ -9,6 +9,8 @@ import { EsqueciMinhaSenhaComponent } from './pages/esqueci-minha-senha/esqueci-
 import { AdminComponent } from './pages/admin/admin.component';
 import { CriarUsuarioComponent } from './pages/criar-usuario/criar-usuario.component';
 import { FormAlteraUsuarioComponent } from './pages/form-altera-usuario/form-altera-usuario.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import { AdvogadoComponent } from './pages/advogado/advogado.component';
 
 export const routes: Routes = [
     {
@@ -50,6 +52,14 @@ export const routes: Routes = [
     { 
         path: 'form-altera-usuario', 
         component: FormAlteraUsuarioComponent 
+    },
+    { 
+        path: 'cliente', 
+        component: ClienteComponent 
+    },
+    { 
+        path: 'advogado', 
+        component: AdvogadoComponent 
     },
     { 
         path: '', 
