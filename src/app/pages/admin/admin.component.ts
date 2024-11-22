@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AdminLayoutComponent } from '../../admin-layout/admin-layout.component';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/usuario';
+import { NotExpr } from '@angular/compiler';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
   imports: [
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
@@ -16,8 +19,16 @@ export class AdminComponent implements OnInit{
   usuarios: Usuario[] = [];
   loading = false;
   error = '';
+  searchTerm: string = ''
+  pesquisarForm!: FormGroup;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(
+    private usuarioService: UsuarioService
+  ) {
+    this.pesquisarForm = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.email]),
+  })
+   }
 
   ngOnInit() {
     this.carregarUsuarios();
@@ -32,6 +43,27 @@ export class AdminComponent implements OnInit{
         console.error('Erro ao carregar usuários:', error);
       }
     });
+  }
+
+  buscarUsuario(): void {
+    this.searchTerm = this.pesquisarForm.value.username
+    if (!this.searchTerm.trim()) {
+      console.log(this.searchTerm)
+      this.carregarUsuarios(); // Recarrega todos os usuários se a pesquisa estiver vazia
+      return;
+    }
+
+    this.loading = true;
+    this.error = '';
+    this.usuarioService.getUsuarioByUsername(this.searchTerm).subscribe({
+      next: (usuario) => {
+        this.usuarios = [usuario];
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar usuários:', error);
+      }
+    })
   }
 
   editarUsuario(usuario: Usuario) {

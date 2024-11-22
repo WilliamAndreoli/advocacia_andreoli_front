@@ -29,6 +29,12 @@ export class UsuarioService {
     );
   }
 
+  getUsuarioByUsername(username: string): Observable<Usuario> {
+    const headers = this.getHeaders();
+    console.log(`${this.apiUrl}/username/${username}`)
+    return this.HttpClient.get<Usuario>(`${this.apiUrl}/username/${username}`, { headers });
+  }
+
   createUsuario(usuario: any): Observable<Usuario> {
     console.log("Entrou create usuario")
     const headers = this.getHeaders();

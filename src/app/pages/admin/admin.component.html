@@ -5,6 +5,18 @@
             <div class="col-md-8 mt-3">
                 <div class="usuario-container text-light">
                     <h2>Lista de Usuários</h2>
+                    <div class="input-group" style="max-width: 300px;">
+                        <form [formGroup]="pesquisarForm">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                placeholder="Pesquisar username..." 
+                                (keyup.enter)="buscarUsuario()"
+                                formControlName="username"
+                            />
+                        </form>
+              <button class="btn btn-primary" (click)="buscarUsuario()">Buscar</button>
+                    </div>
                     
                     @if (loading) {
                         <div class="loading">
@@ -39,8 +51,8 @@
                                         <td class="tabelaUsuario">{{usuario.status}}</td>
                                         <td class="tabelaUsuario">{{usuario.tipoUsuario.descricao}}</td>
                                         <td class="tabelaBotoes">
-                                          <button (click)="editarUsuario(usuario)" class="btn btn-primary btn-sm mt-3">Editar</button>
-                                          <button (click)="excluirUsuario(usuario)" class="btn btn-danger btn-sm mt-3 mb-2">Excluir</button>
+                                          <button (click)="editarUsuario(usuario)" class="btn btn-primary btn-sm">Editar</button>
+                                          <button (click)="excluirUsuario(usuario)" class="btn btn-danger btn-sm">Excluir</button>
                                         </td>
                                       </tr>
                                 }
