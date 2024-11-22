@@ -9,6 +9,9 @@ import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { LoginResponse } from '../../types/login-response.types';
 import { ContatoComponent } from '../../contato/contato.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorResponse } from '../../types/error-response.type';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -70,14 +73,25 @@ export class LoginComponent {
             this.toastService.error('Sem permissão de acesso');
           }
         }),
-        catchError((error) => {
-          this.toastService.error("Erro inesperado. Tente novamente mais tarde!");
-          return of(null);
+        catchError((error: HttpErrorResponse) => {
+          let errorMessage = 'Erro ao realizar login'
+          
+          if (error.error) {
+            const errorResponse = error.error as ErrorResponse;
+
+            switch(error.status) {
+              case 401:
+                errorMessage = errorResponse.message || 'Dados inválidos';
+                break;
+            }
+          }
+
+          this.toastService.error(errorMessage);
+          return throwError(() => error);
         })
       ).subscribe();
     } else {
-      console.log('Formulário inválido');
+      this.toastService.error('Formulário inválido');
     }
   }
 }
-
