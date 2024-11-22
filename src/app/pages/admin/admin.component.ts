@@ -4,6 +4,8 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../interfaces/usuario';
 import { NotExpr } from '@angular/compiler';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +25,9 @@ export class AdminComponent implements OnInit{
   pesquisarForm!: FormGroup;
 
   constructor(
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private http: HttpClient,
+    private router: Router
   ) {
     this.pesquisarForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.email]),
@@ -67,7 +71,9 @@ export class AdminComponent implements OnInit{
   }
 
   editarUsuario(usuario: Usuario) {
-    console.log("editar usuario")
+    sessionStorage.setItem("alteraUsuarioNome", usuario.username)
+
+    this.router.navigate(['/form-altera-usuario']);
   }
 
   excluirUsuario(usuario: Usuario) {

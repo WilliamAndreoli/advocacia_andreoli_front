@@ -44,8 +44,8 @@ export class UsuarioService {
     return this.HttpClient.post<Usuario>(this.apiUrl, usuario, { headers });
   }
 
-  updateUsuario(username: string, usuario: Usuario): Observable<Usuario> {
+  updateUsuario(username: string, usuario: any): Observable<Usuario> {
     const headers = this.getHeaders();
-    return this.HttpClient.put<Usuario>(`${this.apiUrl}/${username}`, usuario, { headers });
+    return this.HttpClient.put<Usuario>(`${this.apiUrl}/username/${username}`, usuario, { headers });
   }
 }

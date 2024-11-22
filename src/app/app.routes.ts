@@ -8,6 +8,7 @@ import { DireitoConsumidorComponent } from './pages/direito-consumidor/direito-c
 import { EsqueciMinhaSenhaComponent } from './pages/esqueci-minha-senha/esqueci-minha-senha.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CriarUsuarioComponent } from './pages/criar-usuario/criar-usuario.component';
+import { FormAlteraUsuarioComponent } from './pages/form-altera-usuario/form-altera-usuario.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +46,10 @@ export const routes: Routes = [
     { 
         path: 'criar-usuario', 
         component: CriarUsuarioComponent 
+    },
+    { 
+        path: 'form-altera-usuario', 
+        component: FormAlteraUsuarioComponent 
     },
     { 
         path: '', 
