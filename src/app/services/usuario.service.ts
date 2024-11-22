@@ -20,13 +20,15 @@ export class UsuarioService {
     });
   }
 
-  getAllUsuarios(): Observable<Usuario[]> {
+  getAllUsuariosAtivos(page: number = 0, size: number = 10): Observable<any> {
     const headers = this.getHeaders();
-    return this.HttpClient.get<Usuario[]>(this.apiUrl, { headers }).pipe(
-      tap(usuarios => {
-        console.log('Usuários carregados:', usuarios);
-      })
-    );
+    return this.HttpClient.get<Usuario[]>(`${this.apiUrl}/ativos`, { 
+      headers,
+      params: {
+        page: page.toString(),
+        size: size.toString()
+      } 
+    });
   }
 
   getUsuarioByUsername(username: string): Observable<Usuario> {

@@ -24,6 +24,11 @@ export class AdminComponent implements OnInit{
   error = '';
   searchTerm: string = ''
   pesquisarForm!: FormGroup;
+  currentPage = 0;
+  pageSize = 10;
+  totalPages = 0;
+  totalElements = 0;
+
 
   constructor(
     private usuarioService: UsuarioService,
@@ -41,14 +46,25 @@ export class AdminComponent implements OnInit{
   }
 
   carregarUsuarios() {
-    this.usuarioService.getAllUsuarios().subscribe({
-      next: (usuarios) => {
-        this.usuarios = usuarios;
+    this.loading = true;
+    this.usuarioService.getAllUsuariosAtivos(this.currentPage, this.pageSize).subscribe({
+      next: (response) => {
+        this.usuarios = response.content;
+        console.log(response)
+        this.totalPages = response.totalPages;
+        this.totalElements = response.totalElements;
+        this.loading = false;
       },
       error: (error) => {
         console.error('Erro ao carregar usuários:', error);
+        this.loading = false;
       }
     });
+  }
+
+  mudarPagina(page: number) {
+    this.currentPage = page;
+    this.carregarUsuarios();
   }
 
   buscarUsuario(): void {
