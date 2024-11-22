@@ -2,15 +2,15 @@
 <section id="clientes-advogado-component">
     <div class="container">
         <div class="row">
-            <div class="col mt-4">
+            <div class="col mt-4 bg-gray">
                 <h2 class="text-light">Lista de Clientes:</h2>
                 
                 <div>
-                      <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Processo: 1</a>
-                        <a href="#" class="list-group-item list-group-item-action">Processo: 2</a>
-                        <a href="#" class="list-group-item list-group-item-action">Processo: 3</a>
-                    </div>
+                  <div class="list-group">
+                    @for (cliente of clientes; track $index) {
+                      <a href="#" class="list-group-item list-group-item-action">{{ cliente.nome }}</a>
+                    }    
+                  </div>
 
                       <nav aria-label="...">
                         <ul class="pagination pagination-sm mt-3">
