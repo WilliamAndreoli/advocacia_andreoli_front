@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { AdvLayoutComponent } from '../../layout/adv-layout/adv-layout.component';
 
 @Component({
-  selector: 'app-advogado',
+  selector: 'app-clientes-advogado',
   standalone: true,
   imports: [
     AdvLayoutComponent
   ],
-  templateUrl: './advogado.component.html',
-  styleUrl: './advogado.component.scss'
+  templateUrl: './clientes-advogado.component.html',
+  styleUrl: './clientes-advogado.component.scss'
 })
-export class AdvogadoComponent {
-  name = sessionStorage.getItem("name");
+export class ClientesAdvogadoComponent {
 
 }

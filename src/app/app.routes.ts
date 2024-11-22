@@ -11,6 +11,7 @@ import { CriarUsuarioComponent } from './pages/criar-usuario/criar-usuario.compo
 import { FormAlteraUsuarioComponent } from './pages/form-altera-usuario/form-altera-usuario.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { AdvogadoComponent } from './pages/advogado/advogado.component';
+import { ClientesAdvogadoComponent } from './pages/clientes-advogado/clientes-advogado.component';
 
 export const routes: Routes = [
     {
@@ -60,6 +61,10 @@ export const routes: Routes = [
     { 
         path: 'advogado', 
         component: AdvogadoComponent 
+    },
+    { 
+        path: 'clientes-advogado', 
+        component: ClientesAdvogadoComponent 
     },
     { 
         path: '', 
