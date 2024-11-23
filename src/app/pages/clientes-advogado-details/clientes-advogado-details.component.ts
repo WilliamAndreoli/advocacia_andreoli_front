@@ -4,40 +4,41 @@ import { Cliente } from '../../interfaces/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-clientes-advogado',
+  selector: 'app-clientes-advogado-details',
   standalone: true,
   imports: [
     AdvLayoutComponent
   ],
-  templateUrl: './clientes-advogado.component.html',
-  styleUrl: './clientes-advogado.component.scss'
+  templateUrl: './clientes-advogado-details.component.html',
+  styleUrl: './clientes-advogado-details.component.scss'
 })
-export class ClientesAdvogadoComponent implements OnInit{
-  clientes: Cliente[] = [];
+export class ClientesAdvogadoDetailsComponent implements OnInit{
+  cpf: any;
   loading = false;
   error = '';
+  cliente: any;
 
   constructor(
     private clienteService: ClienteService,
     private http: HttpClient,
-    private toastService: ToastrService,
-    private router: Router
+    private toastService: ToastrService
   ) {
 
    }
 
-   ngOnInit() {
-    this.carregarClientes();
+  ngOnInit() {
+    this.carregaCliente();
   }
 
-  carregarClientes() {
+  carregaCliente() {
     this.loading = true;
-    this.clienteService.getAllClientes().subscribe({
+    this.cpf = localStorage.getItem("cpfClienteExibido");
+    this.clienteService.getClientePorCpf(this.cpf).subscribe({
       next: (response) => {
-        this.clientes = response;
+        console.log(response)
+        this.cliente = response;
         this.loading = false;
       },
       error: (error) => {
@@ -45,11 +46,6 @@ export class ClientesAdvogadoComponent implements OnInit{
         this.loading = false;
       }
     });
-  }
-
-  exibirDetalhesDoCliente(cpf: string) {
-    this.router.navigate(['/clientes-advogado-details']);
-    localStorage.setItem("cpfClienteExibido", cpf)
   }
 
 }

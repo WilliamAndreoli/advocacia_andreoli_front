@@ -23,4 +23,9 @@ export class ProcessoService {
     return this.HttpClient.get<Processo[]>(this.apiUrl, { headers });
   }
 
+  getAllProcessosPorCliente(cpf: string) {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<Processo[]>(`${this.apiUrl}/clientes/${cpf}`, { headers });
+  }
+
 }

@@ -19,6 +19,10 @@
                             </div>
                         </form>
                     </div>
+
+                    <div style="border-radius: 20px;" class="mt-2 text-dark text-center bg-gray text-uppercase">
+                        Total de usuários: {{ totalElements }}
+                    </div>
                     
                     @if (loading) {
                         <div class="loading">
@@ -85,11 +89,6 @@
                                 </li>
                                 </ul>
                             </nav>
-                        
-                            <!-- Optional: Add total elements info -->
-                            <div class="mt-2 text-light text-uppercase">
-                                Total de usuários: {{ totalElements }}
-                            </div>
                     }
                     
                     @if (!loading && usuarios.length === 0) {

@@ -22,7 +22,7 @@
                 <div>
                   <div class="list-group">
                     @for (cliente of clientes; track $index) {
-                      <a href="#" class="list-group-item list-group-item-action">{{ cliente.nome }}</a>
+                      <a (click)="exibirDetalhesDoCliente(cliente.cpf)" class="list-group-item list-group-item-action">{{ cliente.nome }}</a>
                     }    
                   </div>
 

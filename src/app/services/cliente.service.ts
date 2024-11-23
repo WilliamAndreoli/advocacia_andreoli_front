@@ -26,10 +26,15 @@ export class ClienteService {
     return this.HttpClient.get<Cliente[]>(this.apiUrl, { headers });
   }
 
+  getClientePorCpf(cpf: string): Observable<Cliente> {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<Cliente>(`${this.apiUrl}/cpf/${cpf}`, { headers });
+  }
+
   createCliente(cliente: any): Observable<Cliente> {
     const headers = this.getHeaders();
 
-    return this.HttpClient.post<Cliente>(this.apiUrl, cliente, { headers })
+    return this.HttpClient.post<Cliente>(this.apiUrl, cliente, { headers });
 
   } 
 
