@@ -31,6 +31,11 @@ export class ClienteService {
     return this.HttpClient.get<Cliente>(`${this.apiUrl}/cpf/${cpf}`, { headers });
   }
 
+  getClientePorEmail(email: string): Observable<Cliente> {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<Cliente>(`${this.apiUrl}/email/${email}`, { headers });
+  }
+
   createCliente(cliente: any): Observable<Cliente> {
     const headers = this.getHeaders();
 
