@@ -14,6 +14,7 @@ import { AdvogadoComponent } from './pages/advogado/advogado.component';
 import { ClientesAdvogadoComponent } from './pages/clientes-advogado/clientes-advogado.component';
 import { FormCriaClienteComponent } from './pages/form-cria-cliente/form-cria-cliente.component';
 import { ProcessosClienteComponent } from './pages/processos-cliente/processos-cliente.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {
@@ -41,40 +42,44 @@ export const routes: Routes = [
         component: DireitoConsumidorComponent 
     },
     { 
-        path: 'esqueci-minha-senha', 
-        component: EsqueciMinhaSenhaComponent 
-    },
-    { 
         path: 'admin', 
-        component: AdminComponent 
+        component: AdminComponent,
+        canActivate: [authGuard] 
     },
     { 
         path: 'criar-usuario', 
-        component: CriarUsuarioComponent 
+        component: CriarUsuarioComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'form-altera-usuario', 
-        component: FormAlteraUsuarioComponent 
+        component: FormAlteraUsuarioComponent,
+        canActivate: [authGuard] 
     },
     { 
         path: 'cliente', 
-        component: ClienteComponent 
+        component: ClienteComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'advogado', 
-        component: AdvogadoComponent 
+        component: AdvogadoComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'clientes-advogado', 
-        component: ClientesAdvogadoComponent 
+        component: ClientesAdvogadoComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'form-cria-cliente', 
-        component: FormCriaClienteComponent 
+        component: FormCriaClienteComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'processos-cliente', 
-        component: ProcessosClienteComponent 
+        component: ProcessosClienteComponent,
+        canActivate: [authGuard]
     },
     { 
         path: '', 
