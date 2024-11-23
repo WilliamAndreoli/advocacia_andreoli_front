@@ -48,4 +48,17 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
     });
   }
 
+  criarUsuarioCliente() {
+    this.clienteService.createUsuarioCliente(this.cliente.nome).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.toastService.success("Usuário Criado com Sucesso!");
+      },
+      error: (error) => {
+        console.log("Erro ao criar Usuário para o Cliente:", error);
+        this.toastService.error("Erro ao criar Usuário para o Cliente!");
+      }
+    })
+  }
+
 }

@@ -38,4 +38,11 @@ export class ClienteService {
 
   } 
 
+  createUsuarioCliente(nome: string): Observable<any> {
+    const headers = this.getHeaders();
+
+    return this.HttpClient.post<Cliente>(`${this.apiUrl}/nome/${nome}`, { headers });
+
+  } 
+
 }

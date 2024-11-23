@@ -3,56 +3,72 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col mt-3 text-light">
-                <h2>Informações do Cliente:</h2>
+            <div class="col mt-3 bg-gray">
+                <div class="d-flex box-titulo">
+                    <a href="/clientes-advogado" class="btn btn-return btn-warning btn-sm"><svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a>
+                    <h2>Informações do Cliente</h2>
+                </div>
+                
             
-                <div>
-                    <div>Nome:</div>
-                    <div style="margin-left: 20px;">{{ cliente.nome }}</div>
+                <div class="box-informacoes">
+                    <h4>Nome:</h4>
+                    <div class="informacoes">{{ cliente.nome }}</div>
                 </div>
-                <div>
-                    <span>Email:</span>
-                    <div style="margin-left: 20px;">{{ cliente.email }}</div>
+                <div class="box-informacoes">
+                    <h4>Email:</h4>
+                    <div class="informacoes">{{ cliente.email }}</div>
                 </div>
-                <div>
-                    <span>CPF:</span>
-                    <div style="margin-left: 20px;">{{ cliente.cpf }}</div>
+                <div class="box-informacoes">
+                    <h4>CPF:</h4>
+                    <div class="informacoes">{{ cliente.cpf }}</div>
                 </div>
-                <div>
-                    <span>RG:</span>
-                    <div style="margin-left: 20px;">{{ cliente.rg }}</div>
+                <div class="box-informacoes">
+                    <h4>RG:</h4>
+                    <div class="informacoes">{{ cliente.rg }}</div>
                 </div>
-                <div>
-                    <span>Telefone:</span>
-                    <div style="margin-left: 20px;">{{ cliente.telefone }}</div>
+                <div class="box-informacoes">
+                    <h4>Telefone:</h4>
+                    <div class="informacoes">{{ cliente.telefone }}</div>
                 </div>
-                <div>
-                    <span>Endereço:</span>
-                    <div style="margin-left: 20px;">{{ cliente.endereco }}</div>
+                <div class="box-informacoes">
+                    <h4>Endereço:</h4>
+                    <div class="informacoes">{{ cliente.endereco }}</div>
                 </div>
-                <div>
-                    <span>Nome do Pai:</span>
-                    <div style="margin-left: 20px;">{{ cliente.nome_pai }}</div>
+                <div class="box-informacoes">
+                    <h4>Nome do Pai:</h4>
+                    <div class="informacoes">{{ cliente.nome_pai }}</div>
                 </div>
-                <div>
-                    <span>Nome da Mãe:</span>
-                    <div style="margin-left: 20px;">{{ cliente.nome_mae }}</div>
+                <div class="box-informacoes">
+                    <h4>Nome da Mãe:</h4>
+                    <div class="informacoes">{{ cliente.nome_mae }}</div>
                 </div>
-                <div>
-                    <span>CTPS:</span>
-                    <div style="margin-left: 20px;">{{ cliente.ctps }}</div>
+                <div class="box-informacoes">
+                    <h4>CTPS:</h4>
+                    <div class="informacoes">{{ cliente.ctps }}</div>
                 </div>
-                <div>
-                    <span>CNH:</span>
-                    <div style="margin-left: 20px;">{{ cliente.cnh }}</div>
+                <div class="box-informacoes">
+                    <h4>CNH:</h4>
+                    <div class="informacoes">{{ cliente.cnh }}</div>
                 </div>
-                <div>
-                    <span>Data de Nascimento:</span>
-                    <div style="margin-left: 20px;">{{ cliente.data_nascimento }}</div>
+                <div class="box-informacoes">
+                    <h4>Data de Nascimento:</h4>
+                    <div class="informacoes">{{ cliente.data_nascimento }}</div>
                 </div>
-                <div>
-                    <span>Usuário do Sistema:</span>
-                    <div style="margin-left: 20px;">{{ cliente.usuario }}</div>
+                <div class="box-informacoes">
+                    <h4>Usuário do Sistema:</h4>
+
+                    @if (cliente.usuario == null) {
+                        <div class="box-usuario" style="margin-left: 20px;">
+                            Cliente não possui Usuário Cadastrado
+                            <div>
+                                <button (click)="criarUsuarioCliente()" class="btn btn-warning mt-2 btn-sm">Criar Usuário</button>
+                            </div>
+                        </div> 
+                        
+                    } @else {
+                        <div class="informacoes">{{ cliente.usuario.username }}</div>
+                    }
+                    
                 </div>
 
             </div>

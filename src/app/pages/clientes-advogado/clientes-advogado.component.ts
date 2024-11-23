@@ -49,6 +49,7 @@ export class ClientesAdvogadoComponent implements OnInit{
 
   exibirDetalhesDoCliente(cpf: string) {
     this.router.navigate(['/clientes-advogado-details']);
+    localStorage.removeItem("cpfClienteExibido")
     localStorage.setItem("cpfClienteExibido", cpf)
   }
 
