@@ -7,6 +7,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AdvogadoService } from '../../services/advogado.service';
+import { Advogado } from '../../interfaces/advogado';
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +22,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AdminComponent implements OnInit{
   usuarios: Usuario[] = [];
+  advogados: Advogado[] = [];
   loading = false;
   error = '';
   searchTerm: string = ''
@@ -32,6 +35,7 @@ export class AdminComponent implements OnInit{
 
   constructor(
     private usuarioService: UsuarioService,
+    private advogadoService: AdvogadoService,
     private http: HttpClient,
     private toastService: ToastrService,
     private router: Router
@@ -43,6 +47,7 @@ export class AdminComponent implements OnInit{
 
   ngOnInit() {
     this.carregarUsuarios();
+    this.carregarAdvogados();
   }
 
   carregarUsuarios() {
@@ -57,6 +62,20 @@ export class AdminComponent implements OnInit{
       },
       error: (error) => {
         console.error('Erro ao carregar usuários:', error);
+        this.loading = false;
+      }
+    });
+  }
+
+  carregarAdvogados() {
+    this.loading = true;
+    this.advogadoService.getAllAdvogados().subscribe({
+      next: (response) => {
+        this.advogados = response;
+        console.log(response)
+      },
+      error: (error) => {
+        console.error('Erro ao carregar advogados:', error);
         this.loading = false;
       }
     });

@@ -30,4 +30,11 @@ export class ProcessoService {
     return this.HttpClient.get<Processo[]>(`${this.apiUrl}/cliente/${cpf}`, { headers });
   }
 
+  getAllProcessosPorAdvogado(numeroOrdem: string) {
+    const headers = this.getHeaders();
+    console.log(numeroOrdem)
+    console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
+    return this.HttpClient.get<Processo[]>(`${this.apiUrl}/advogado/${numeroOrdem}`, { headers });
+  }
+
 }

@@ -1,0 +1,47 @@
+
+<section id="clientes-advogado-component">
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4 bg-gray">
+                <h2 class="text-light">Lista de Processos:</h2>
+                
+                <div class="input-group d-inline" style="max-width: 300px;">
+                  <form>
+                      <div class="input-group mb-3">
+                          <input 
+                          type="text" 
+                          class="form-control" 
+                          placeholder="Pesquisar Número do Processo..."
+                          formControlName="username"
+                          />        
+                          <button class="btn btn-primary" >Buscar</button>
+                      </div>
+                  </form>
+              </div>
+
+                <div>
+                  <div class="list-group">
+                    @for (processo of processos; track $index) {
+                        <a href="#" class="list-group-item list-group-item-action">Número do Processo: {{ processo.numeroProcesso }}</a>
+                    }   
+                  </div>
+
+                      <nav aria-label="...">
+                        <ul class="pagination pagination-sm mt-3">
+                          <li class="page-item active" aria-current="page">
+                            <span class="page-link">1</span>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        </ul>
+                      </nav>
+                </div>
+
+                <div class="mt-3">
+                    <a href="/cliente" class="btn btn-warning btn-sm">Voltar</a>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</section>

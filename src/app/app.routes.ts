@@ -16,6 +16,7 @@ import { FormCriaClienteComponent } from './pages/form-cria-cliente/form-cria-cl
 import { ProcessosClienteComponent } from './pages/processos-cliente/processos-cliente.component';
 import { authGuard } from './auth.guard';
 import { ClientesAdvogadoDetailsComponent } from './pages/clientes-advogado-details/clientes-advogado-details.component';
+import { ProcessosAdvogadoComponent } from './pages/processos-advogado/processos-advogado.component';
 
 export const routes: Routes = [
     {
@@ -85,6 +86,11 @@ export const routes: Routes = [
     { 
         path: 'clientes-advogado-details', 
         component: ClientesAdvogadoDetailsComponent,
+        canActivate: [authGuard]
+    },
+    { 
+        path: 'processos-advogado', 
+        component: ProcessosAdvogadoComponent,
         canActivate: [authGuard]
     },
     { 
