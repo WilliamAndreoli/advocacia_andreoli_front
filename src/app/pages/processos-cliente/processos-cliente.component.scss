@@ -1,0 +1,32 @@
+.bg-gray {
+    background-color: #1E1E1E;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.lista-processos {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    background-color: #1e1e11;
+    border: #ffd82f 0.5px solid;
+    color: white;
+}
+
+.list-group-item:hover {
+    background-color: #ffd82f;
+    color: black;
+}
+
+.page-link {
+    background-color: #1e1e1e;
+    border: #ffd82f 0.5px solid;
+    color: white;
+}
+
+.active > .page-link {
+    background-color: #ffd82f;
+    color: black;
+}

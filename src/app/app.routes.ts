@@ -13,6 +13,7 @@ import { ClienteComponent } from './pages/cliente/cliente.component';
 import { AdvogadoComponent } from './pages/advogado/advogado.component';
 import { ClientesAdvogadoComponent } from './pages/clientes-advogado/clientes-advogado.component';
 import { FormCriaClienteComponent } from './pages/form-cria-cliente/form-cria-cliente.component';
+import { ProcessosClienteComponent } from './pages/processos-cliente/processos-cliente.component';
 
 export const routes: Routes = [
     {
@@ -70,6 +71,10 @@ export const routes: Routes = [
     { 
         path: 'form-cria-cliente', 
         component: FormCriaClienteComponent 
+    },
+    { 
+        path: 'processos-cliente', 
+        component: ProcessosClienteComponent 
     },
     { 
         path: '', 
