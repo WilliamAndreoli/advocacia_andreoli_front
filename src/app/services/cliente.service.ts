@@ -26,6 +26,17 @@ export class ClienteService {
     return this.HttpClient.get<Cliente[]>(this.apiUrl, { headers });
   }
 
+  getAllClientesAtivos(page: number = 0, size: number = 10): Observable<any> {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<Cliente[]>(`${this.apiUrl}/ativos`, { 
+      headers,
+      params: {
+        page: page.toString(),
+        size: size.toString()
+      } 
+    });
+  }
+
   getClientePorCpf(cpf: string): Observable<Cliente> {
     const headers = this.getHeaders();
     return this.HttpClient.get<Cliente>(`${this.apiUrl}/cpf/${cpf}`, { headers });

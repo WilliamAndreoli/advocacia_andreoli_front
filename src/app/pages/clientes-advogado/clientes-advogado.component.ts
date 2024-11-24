@@ -19,6 +19,10 @@ export class ClientesAdvogadoComponent implements OnInit{
   clientes: Cliente[] = [];
   loading = false;
   error = '';
+  currentPage = 0;
+  pageSize = 10;
+  totalPages = 0;
+  totalElements = 0;
 
   constructor(
     private clienteService: ClienteService,
@@ -35,9 +39,12 @@ export class ClientesAdvogadoComponent implements OnInit{
 
   carregarClientes() {
     this.loading = true;
-    this.clienteService.getAllClientes().subscribe({
+    this.clienteService.getAllClientesAtivos(this.currentPage, this.pageSize).subscribe({
       next: (response) => {
-        this.clientes = response;
+        this.clientes = response.content;
+        this.loading = false;
+        this.totalPages = response.totalPages;
+        this.totalElements = response.totalElements;
         this.loading = false;
       },
       error: (error) => {
@@ -45,6 +52,11 @@ export class ClientesAdvogadoComponent implements OnInit{
         this.loading = false;
       }
     });
+  }
+
+  mudarPagina(page: number) {
+    this.currentPage = page;
+    this.carregarClientes();
   }
 
   exibirDetalhesDoCliente(cpf: string) {
