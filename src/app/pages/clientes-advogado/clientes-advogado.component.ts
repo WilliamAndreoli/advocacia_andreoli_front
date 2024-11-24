@@ -42,7 +42,6 @@ export class ClientesAdvogadoComponent implements OnInit{
     this.clienteService.getAllClientesAtivos(this.currentPage, this.pageSize).subscribe({
       next: (response) => {
         this.clientes = response.content;
-        this.loading = false;
         this.totalPages = response.totalPages;
         this.totalElements = response.totalElements;
         this.loading = false;

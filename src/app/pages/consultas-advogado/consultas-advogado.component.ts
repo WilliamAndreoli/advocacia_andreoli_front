@@ -22,6 +22,10 @@ export class ConsultasAdvogadoComponent implements OnInit{
   loading = false;
   error = '';
   consultas: Consulta[] = [];
+  currentPage = 0;
+  pageSize = 4;
+  totalPages = 0;
+  totalElements = 0;
 
   constructor(
     private consultaService: ConsultaService,
@@ -37,10 +41,12 @@ export class ConsultasAdvogadoComponent implements OnInit{
 
   carregarConsultas() {
     this.loading = true;
-    this.consultaService.getAllConsultas().subscribe({
+    this.consultaService.getAllConsultasPageable(this.currentPage, this.pageSize).subscribe({
       next: (response) => {
         console.log(response)
-        this.consultas = response;
+        this.consultas = response.content;
+        this.totalPages = response.totalPages;
+        this.totalElements = response.totalElements;
         this.loading = false;
       },
       error: (error) => {
@@ -48,6 +54,11 @@ export class ConsultasAdvogadoComponent implements OnInit{
         this.loading = false;
       }
     });
+  }
+
+  mudarPagina(page: number) {
+    this.currentPage = page;
+    this.carregarConsultas();
   }
 
 }
