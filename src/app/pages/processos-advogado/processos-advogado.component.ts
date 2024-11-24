@@ -30,6 +30,11 @@ export class ProcessosAdvogadoComponent {
   searchTerm: string = ''
   pesquisarForm!: FormGroup;
 
+  currentPage = 0;
+  pageSize = 10;
+  totalPages = 0;
+  totalElements = 0;
+
   constructor(
     private advogadoService: AdvogadoService,
     private processoService: ProcessoService,
@@ -38,7 +43,7 @@ export class ProcessosAdvogadoComponent {
     private router: Router
   ) {
     this.pesquisarForm = new FormGroup({
-      numeroOrdem: new FormControl('', [Validators.required]),
+      numeroProcesso: new FormControl('', [Validators.required]),
     })
    }
 
@@ -63,10 +68,12 @@ export class ProcessosAdvogadoComponent {
    carregarProcessos() {
     this.loading = true;
 
-    this.processoService.getAllProcessosPorAdvogado(this.numeroOrdem).subscribe({
+    this.processoService.getAllProcessosPorAdvogado(this.numeroOrdem, this.currentPage, this.pageSize).subscribe({
       next: (response) => {
-        this.processos = response;
+        this.processos = response.content;
         //console.log(this.processos)
+        this.totalPages = response.totalPages;
+        this.totalElements = response.totalElements;
         this.loading = false;
       },
       error: (error) => {
@@ -77,7 +84,7 @@ export class ProcessosAdvogadoComponent {
   }
 
   buscarProcesso(): void {
-    this.searchTerm = this.pesquisarForm.value.cpf
+    this.searchTerm = this.pesquisarForm.value.numeroProcesso
     if (!this.searchTerm.trim()) {
       //console.log(this.searchTerm)
       this.carregarProcessos(); // Recarrega todos os usuários se a pesquisa estiver vazia
@@ -95,6 +102,11 @@ export class ProcessosAdvogadoComponent {
         console.error('Erro ao carregar processos:', error);
       }
     })
+  }
+
+  mudarPagina(page: number) {
+    this.currentPage = page;
+    this.carregarProcessos();
   }
 
 }

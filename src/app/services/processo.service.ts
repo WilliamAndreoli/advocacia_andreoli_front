@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Processo } from '../interfaces/processo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,11 +36,17 @@ export class ProcessoService {
     return this.HttpClient.get<Processo[]>(`${this.apiUrl}/cliente/${cpf}`, { headers });
   }
 
-  getAllProcessosPorAdvogado(numeroOrdem: string) {
+  getAllProcessosPorAdvogado(numeroOrdem: string, page: number = 0, size: number = 10): Observable<any> {
     const headers = this.getHeaders();
     //console.log(numeroOrdem)
     //console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
-    return this.HttpClient.get<Processo[]>(`${this.apiUrl}/advogado/${numeroOrdem}`, { headers });
+    return this.HttpClient.get<Processo[]>(`${this.apiUrl}/advogado/${numeroOrdem}`, { 
+      headers, 
+      params: {
+        page: page.toString(),
+        size: size.toString()
+      } 
+    });
   }
 
 }
