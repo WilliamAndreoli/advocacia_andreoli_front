@@ -5,6 +5,22 @@
     border-radius: 20px;
 }
 
+.btn-primary {
+    background-color: #ffd82f;
+    border-color: #ffd82f;
+    color: black;
+}
+
+.btn-primary:hover {
+    background-color: #ffc107;
+    border-color: #ffd82f;
+    color: black;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ffd82f;
+}
+
 .lista-processos {
     margin-top: 20px;
 }
