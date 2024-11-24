@@ -16,12 +16,15 @@
                   <div class="search-box">
                     <div class="row">
                       <div class="col-md-6">
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Pesquisar cpf...">
-                          <button class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                          </button>
-                        </div>
+                        <form [formGroup]="pesquisarForm">
+                          <div class="input-group">
+                            <input type="text" (keyup.enter)="buscarCliente()"
+                            formControlName="cpf" class="form-control" placeholder="Pesquisar cpf...">
+                            <button (click)="buscarCliente()" class="btn btn-primary">
+                              <i class="fas fa-search"></i>
+                            </button>
+                          </div>
+                      </form>
                       </div>
                       <div class="col-md-6">
                         <!-- <div class="filters">
