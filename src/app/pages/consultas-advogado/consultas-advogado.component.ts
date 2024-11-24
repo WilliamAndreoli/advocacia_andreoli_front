@@ -4,13 +4,16 @@ import { ConsultaService } from '../../services/consulta.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Consulta } from '../../interfaces/consulta';
+import { DataFormatPipe } from "../../pipes/data-format.pipe";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-consultas-advogado',
   standalone: true,
   imports: [
-    AdvLayoutComponent
-  ],
+    AdvLayoutComponent,
+    DataFormatPipe
+],
   templateUrl: './consultas-advogado.component.html',
   styleUrl: './consultas-advogado.component.scss'
 })
