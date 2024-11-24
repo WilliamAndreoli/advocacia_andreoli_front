@@ -61,4 +61,12 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
     })
   }
 
+  editarCliente() {
+    console.log("EditarCliente")
+  }
+
+  excluirCliente() {
+    console.log("ExcluirCliente")
+  }
+
 }

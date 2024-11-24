@@ -25,15 +25,15 @@ export class ProcessoService {
 
   getAllProcessosPorCliente(cpf: string) {
     const headers = this.getHeaders();
-    console.log(cpf)
-    console.log(`${this.apiUrl}/cliente/${cpf}`)
+    //console.log(cpf)
+    //console.log(`${this.apiUrl}/cliente/${cpf}`)
     return this.HttpClient.get<Processo[]>(`${this.apiUrl}/cliente/${cpf}`, { headers });
   }
 
   getAllProcessosPorAdvogado(numeroOrdem: string) {
     const headers = this.getHeaders();
-    console.log(numeroOrdem)
-    console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
+    //console.log(numeroOrdem)
+    //console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
     return this.HttpClient.get<Processo[]>(`${this.apiUrl}/advogado/${numeroOrdem}`, { headers });
   }
 

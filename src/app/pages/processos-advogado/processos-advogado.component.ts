@@ -39,7 +39,7 @@ export class ProcessosAdvogadoComponent {
     this.advogadoService.getAdvogadoPorEmail(this.userName).subscribe({
       next: (response) => {
         this.advogado = response
-        console.log(response)
+        //console.log(response)
         this.numeroOrdem = this.advogado.numeroOrdem
         this.carregarProcessos()
       },
@@ -55,7 +55,7 @@ export class ProcessosAdvogadoComponent {
     this.processoService.getAllProcessosPorAdvogado(this.numeroOrdem).subscribe({
       next: (response) => {
         this.processos = response;
-        console.log(this.processos)
+        //console.log(this.processos)
         this.loading = false;
       },
       error: (error) => {
