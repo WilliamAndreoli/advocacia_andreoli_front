@@ -5,11 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AdvogadoService } from '../../services/advogado.service';
+import { AdvLayoutComponent } from '../../layout/adv-layout/adv-layout.component';
 
 @Component({
   selector: 'app-processos-advogado',
   standalone: true,
-  imports: [],
+  imports: [
+    AdvLayoutComponent
+  ],
   templateUrl: './processos-advogado.component.html',
   styleUrl: './processos-advogado.component.scss'
 })

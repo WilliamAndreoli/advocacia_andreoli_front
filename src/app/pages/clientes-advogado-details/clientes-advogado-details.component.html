@@ -1,82 +1,94 @@
 <app-adv-layout></app-adv-layout>
 
 <section>
-    <div class="container">
+    <div class="container my-4">
+        <!-- Título e Botões -->
         <div class="row">
-            <div class="col mt-3 bg-gray">
-                <div class="d-flex box-titulo">
-                    <a href="/clientes-advogado" class="btn btn-return btn-warning btn-sm"><svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a>
-                    <h2>Informações do Cliente</h2>
-
-                    <div class="box-opcoes">
-                        <button class="btn btn-primary box-botao" (click)="editarCliente()">Editar</button>
-                        <button class="btn btn-danger box-botao" (click)="excluirCliente()">Excluir</button>
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center bg-gray p-3 rounded shadow-sm">
+                    <div class="d-flex align-items-center">
+                        <a href="/clientes-advogado" class="btn btn-warning btn-sm me-3">
+                            <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </a>
+                        <h2 class="m-0">Informações do Cliente</h2>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-2" (click)="editarCliente()">Editar</button>
+                        <button class="btn btn-danger" (click)="excluirCliente()">Excluir</button>
                     </div>
                 </div>
-                
-            
-                <div class="box-informacoes">
-                    <h4>Nome:</h4>
-                    <div class="informacoes">{{ cliente.nome }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Email:</h4>
-                    <div class="informacoes">{{ cliente.email }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>CPF:</h4>
-                    <div class="informacoes">{{ cliente.cpf }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>RG:</h4>
-                    <div class="informacoes">{{ cliente.rg }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Telefone:</h4>
-                    <div class="informacoes">{{ cliente.telefone }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Endereço:</h4>
-                    <div class="informacoes">{{ cliente.endereco }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Nome do Pai:</h4>
-                    <div class="informacoes">{{ cliente.nome_pai }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Nome da Mãe:</h4>
-                    <div class="informacoes">{{ cliente.nome_mae }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>CTPS:</h4>
-                    <div class="informacoes">{{ cliente.ctps }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>CNH:</h4>
-                    <div class="informacoes">{{ cliente.cnh }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Data de Nascimento:</h4>
-                    <div class="informacoes">{{ cliente.data_nascimento }}</div>
-                </div>
-                <div class="box-informacoes">
-                    <h4>Usuário do Sistema:</h4>
+            </div>
+        </div>
 
-                    @if (cliente.usuario == null) {
-                        <div class="box-usuario" style="margin-left: 20px;">
-                            Cliente não possui Usuário Cadastrado
-                            <div>
-                                <button (click)="criarUsuarioCliente()" class="btn btn-warning mt-2 btn-sm">Criar Usuário</button>
-                            </div>
-                        </div> 
-                        
-                    } @else {
-                        <div class="informacoes">{{ cliente.usuario.username }}</div>
-                    }
-                    
+        <!-- Informações do Cliente -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="bg-gray p-4 rounded shadow-sm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <h6>Nome:</h6>
+                            <p class="text-muted">{{ cliente.nome }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Email:</h6>
+                            <p class="text-muted">{{ cliente.email }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>CPF:</h6>
+                            <p class="text-muted">{{ cliente.cpf }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>RG:</h6>
+                            <p class="text-muted">{{ cliente.rg }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Telefone:</h6>
+                            <p class="text-muted">{{ cliente.telefone }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Endereço:</h6>
+                            <p class="text-muted">{{ cliente.endereco }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Nome do Pai:</h6>
+                            <p class="text-muted">{{ cliente.nome_pai }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Nome da Mãe:</h6>
+                            <p class="text-muted">{{ cliente.nome_mae }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>CTPS:</h6>
+                            <p class="text-muted">{{ cliente.ctps }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>CNH:</h6>
+                            <p class="text-muted">{{ cliente.cnh }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Data de Nascimento:</h6>
+                            <p class="text-muted">{{ cliente.data_nascimento }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Usuário do Sistema:</h6>
+                            
+                                <div>
+                                    @if (cliente.usuario) {
+                                        {{ cliente.usuario.username }}
+                                    } @else {
+                                    <div>
+                                        <div class="text-danger">Cliente não possui Usuário Cadastrado</div>
+                                        <button (click)="criarUsuarioCliente()" class="btn btn-warning mt-2 btn-sm">Criar Usuário</button>
+                                    </div>
+                                    }
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
         </div>
     </div>
