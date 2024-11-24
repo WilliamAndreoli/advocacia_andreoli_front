@@ -4,6 +4,7 @@ import { Cliente } from '../../interfaces/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-advogado-details',
@@ -23,7 +24,8 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
   constructor(
     private clienteService: ClienteService,
     private http: HttpClient,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private router: Router
   ) {
 
    }
@@ -53,6 +55,12 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
       next: (response) => {
         console.log(response)
         this.toastService.success("Usuário Criado com Sucesso!");
+        // Aguarda um pouco para o usuário ver o toast
+      setTimeout(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/clientes-advogado-details']);
+        });
+      }, 2000); // 2 segundos de delay
       },
       error: (error) => {
         console.log("Erro ao criar Usuário para o Cliente:", error);
