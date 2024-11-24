@@ -6,13 +6,15 @@ import { ToastrService } from 'ngx-toastr';
 import { Consulta } from '../../interfaces/consulta';
 import { DataFormatPipe } from "../../pipes/data-format.pipe";
 import { DatePipe } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-consultas-advogado',
   standalone: true,
   imports: [
     AdvLayoutComponent,
-    DataFormatPipe
+    DataFormatPipe,
+    ReactiveFormsModule
 ],
   templateUrl: './consultas-advogado.component.html',
   styleUrl: './consultas-advogado.component.scss'
@@ -22,17 +24,23 @@ export class ConsultasAdvogadoComponent implements OnInit{
   loading = false;
   error = '';
   consultas: Consulta[] = [];
+
   currentPage = 0;
   pageSize = 4;
   totalPages = 0;
   totalElements = 0;
+
+  searchTerm: string = ''
+  pesquisarForm!: FormGroup;
 
   constructor(
     private consultaService: ConsultaService,
     private http: HttpClient,
     private toastService: ToastrService
   ) {
-    
+    this.pesquisarForm = new FormGroup({
+      cliente: new FormControl('', [Validators.required]),
+    })
   }
 
   ngOnInit() {
@@ -43,7 +51,7 @@ export class ConsultasAdvogadoComponent implements OnInit{
     this.loading = true;
     this.consultaService.getAllConsultasPageable(this.currentPage, this.pageSize).subscribe({
       next: (response) => {
-        console.log(response)
+        //console.log(response)
         this.consultas = response.content;
         this.totalPages = response.totalPages;
         this.totalElements = response.totalElements;
@@ -59,6 +67,27 @@ export class ConsultasAdvogadoComponent implements OnInit{
   mudarPagina(page: number) {
     this.currentPage = page;
     this.carregarConsultas();
+  }
+
+  buscarConsulta(): void {
+    this.searchTerm = this.pesquisarForm.value.cliente
+    if (!this.searchTerm.trim()) {
+      //console.log(this.searchTerm)
+      this.carregarConsultas(); // Recarrega todos os usuários se a pesquisa estiver vazia
+      return;
+    }
+
+    this.loading = true;
+    this.error = '';
+    this.consultaService.getConsultasPorCliente(this.searchTerm).subscribe({
+      next: (consultas) => {
+        this.consultas = consultas;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar Consultas:', error);
+      }
+    })
   }
 
 }
