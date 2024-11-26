@@ -47,8 +47,8 @@ export class FormCriaClienteComponent {
         rg: formValues.rg,
         telefone: formValues.telefone,
         endereco: formValues.endereco,
-        nomePai: formValues.nomePai,
-        nomeMae: formValues.nomeMae,
+        nome_pai: formValues.nomePai,
+        nome_mae: formValues.nomeMae,
         ctps: formValues.ctps,
         cnh: formValues.cnh,
         data_nascimento: formValues.dataNascimento

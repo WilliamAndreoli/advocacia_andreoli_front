@@ -5,12 +5,15 @@ import { ClienteService } from '../../services/cliente.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ClienteEdicaoComponent } from '../cliente-edicao/cliente-edicao.component';
+import { DataFormatPipe } from '../../pipes/data-format.pipe';
 
 @Component({
   selector: 'app-clientes-advogado-details',
   standalone: true,
   imports: [
-    AdvLayoutComponent
+    AdvLayoutComponent,
+    DataFormatPipe
   ],
   templateUrl: './clientes-advogado-details.component.html',
   styleUrl: './clientes-advogado-details.component.scss'
@@ -70,7 +73,7 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
   }
 
   editarCliente() {
-    console.log("EditarCliente")
+   this.router.navigate(['/cliente-edicao']);
   }
 
   excluirCliente() {

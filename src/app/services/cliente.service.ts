@@ -57,10 +57,16 @@ export class ClienteService {
   createUsuarioCliente(nome: string): Observable<any> {
     const headers = this.getHeaders();
 
-    console.log(headers.get("Authorization"))
+    //console.log(headers.get("Authorization"))
 
     return this.HttpClient.post<Cliente>(`${this.apiUrl}/nome/${nome}`, {}, { headers });
 
   } 
+
+  atualizarCliente(cpf: string, dadosCliente: Cliente): Observable<any> {
+    const headers = this.getHeaders();
+
+    return this.HttpClient.put<Cliente>(`${this.apiUrl}/cpf/${cpf}`, dadosCliente, { headers });
+  }
 
 }
