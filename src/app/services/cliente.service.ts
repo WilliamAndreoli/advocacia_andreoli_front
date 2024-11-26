@@ -69,4 +69,17 @@ export class ClienteService {
     return this.HttpClient.put<Cliente>(`${this.apiUrl}/cpf/${cpf}`, dadosCliente, { headers });
   }
 
+  alteraStatus(cpf: string, cliente: any) {
+    const headers = this.getHeaders();
+    if (cliente.status == "ATIVO") {
+      console.log("Entrou no if")
+      console.log(`${this.apiUrl}/status/${cpf}`)
+      cliente.status = "INATIVO"
+      console.log(cliente.status)
+      return this.HttpClient.put<Cliente>(`${this.apiUrl}/status/${cpf}`, cliente, { headers })
+    } else {
+      return this.HttpClient.put<Cliente>(`${this.apiUrl}/status/${cpf}`, cliente, { headers })
+    }
+  }
+
 }

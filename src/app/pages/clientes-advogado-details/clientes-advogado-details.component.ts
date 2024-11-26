@@ -76,8 +76,13 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
    this.router.navigate(['/cliente-edicao']);
   }
 
-  excluirCliente() {
-    console.log("ExcluirCliente")
+  excluirCliente(cliente: Cliente) {
+    this.clienteService.alteraStatus(cliente.cpf, cliente).subscribe({
+      next: (response) => {
+        this.toastService.success("Status do Cliente alterado para INATIVO")
+        this.router.navigate(['/clientes-advogado']);
+      }
+    })
   }
 
 }
