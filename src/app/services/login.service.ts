@@ -26,7 +26,6 @@ export class LoginService {
         sessionStorage.setItem("authorities", tokenInfo.authorities);
 
         if (tokenInfo) {
-          sessionStorage.setItem("userRoles", JSON.stringify(tokenInfo.roles));
           sessionStorage.setItem("userId", tokenInfo.id);
         }
 

@@ -1,0 +1,104 @@
+<div class="container my-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Editar Informações do Processo</h3>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="processoForm" (ngSubmit)="salvarProcesso()">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Número do Processo</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    formControlName="numeroProcesso"
+                  >
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Juiz</label>
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    formControlName="juiz"
+                  >
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Área</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    formControlName="area"
+                  >
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Comarca</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    formControlName="comarca"
+                  >
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Status</label>
+                    <select 
+                      class="form-control" 
+                      formControlName="status">
+                      <option value="">
+                        Selecione um Status
+                      </option>
+                      <option value="INICIAL">
+                        INICIAL
+                      </option>
+                      <option value="CONCLUSO_JULGAMENTO">
+                        CONCLUSO JULGAMENTO
+                      </option>
+                      <option value="SENTENCIADO">
+                        SENTENCIADO
+                      </option>
+                      <option value="TRANSITO_JULGADO">
+                        TRANSITO JULGADO
+                      </option>
+                      <option value="EM_RECURSO">
+                        EM RECURSO
+                      </option>                                    
+                    </select>
+                  </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Valor do Processo</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    formControlName="valor_processo"
+                  >
+                </div>
+              </div>
+
+              <div class="mt-4 d-flex justify-content-between">
+                <button 
+                  type="button" 
+                  class="btn btn-secondary" 
+                  (click)="cancelarEdicao()"
+                >
+                  Cancelar
+                </button>
+                <button 
+                  type="submit" 
+                  class="btn btn-primary"
+                  [disabled]="!processoForm.valid"
+                >
+                  Salvar Alterações
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

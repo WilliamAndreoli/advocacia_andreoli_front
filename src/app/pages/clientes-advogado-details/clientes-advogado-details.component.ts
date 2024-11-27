@@ -85,4 +85,9 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
     })
   }
 
+  retornarPagina() {
+    localStorage.removeItem("cpfClienteExibido");
+    this.router.navigate(['/clientes-advogado']);
+  }
+
 }

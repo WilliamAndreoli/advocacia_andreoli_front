@@ -48,6 +48,15 @@ export class ProcessosAdvogadoDetailsComponent implements OnInit{
       }
     });
   }
+
+  retornarPagina() {
+    localStorage.removeItem("numeroProcessoExibido");
+    this.router.navigate(['/processos-advogado']);
+  }
+
+  editarProcesso() {
+    this.router.navigate(['/processos-edicao']);
+  }
   
 
 }
