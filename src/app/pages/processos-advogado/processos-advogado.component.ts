@@ -104,6 +104,12 @@ export class ProcessosAdvogadoComponent {
     })
   }
 
+  exibirDetalhesDoProcesso(numeroProcesso: string) {
+    this.router.navigate(['/processos-advogado-details']);
+    localStorage.removeItem("numeroProcessoExibido")
+    localStorage.setItem("numeroProcessoExibido", numeroProcesso)
+  }
+
   mudarPagina(page: number) {
     this.currentPage = page;
     this.carregarProcessos();

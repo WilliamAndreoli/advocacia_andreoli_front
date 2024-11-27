@@ -20,6 +20,7 @@ import { ProcessosAdvogadoComponent } from './pages/processos-advogado/processos
 import { ConsultasAdvogadoComponent } from './pages/consultas-advogado/consultas-advogado.component';
 import { ClienteEdicaoComponent } from './pages/cliente-edicao/cliente-edicao.component';
 import { FormCriaProcessoComponent } from './pages/form-cria-processo/form-cria-processo.component';
+import { ProcessosAdvogadoDetailsComponent } from './pages/processos-advogado-details/processos-advogado-details.component';
 
 export const routes: Routes = [
     {
@@ -104,6 +105,11 @@ export const routes: Routes = [
     { 
         path: 'processos-advogado', 
         component: ProcessosAdvogadoComponent,
+        canActivate: [authGuard]
+    },
+    { 
+        path: 'processos-advogado-details', 
+        component: ProcessosAdvogadoDetailsComponent,
         canActivate: [authGuard]
     },
     { 
