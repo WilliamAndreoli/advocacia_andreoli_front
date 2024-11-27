@@ -12,5 +12,5 @@ export interface Processo {
     valor_processo: DoubleRange;
     advogado: Advogado;
     cliente: Cliente;
-    documentos_Processo: Documentos_Processo[];
+    //documentos_Processo: Documentos_Processo[];
 }

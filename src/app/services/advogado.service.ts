@@ -37,6 +37,11 @@ export class AdvogadoService {
     return this.HttpClient.get<Advogado>(`${this.apiUrl}/email/${email}`, { headers });
   }
 
+  getAdvogadoPorNome(nome: string): Observable<Advogado> {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<Advogado>(`${this.apiUrl}/nome/${nome}`, { headers });
+  }
+
   createAdvogado(advogado: any): Observable<Advogado> {
     const headers = this.getHeaders();
 

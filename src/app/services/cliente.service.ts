@@ -47,11 +47,15 @@ export class ClienteService {
     return this.HttpClient.get<Cliente>(`${this.apiUrl}/email/${email}`, { headers });
   }
 
+  getClientePorNome(nome: string): Observable<Cliente> {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<Cliente>(`${this.apiUrl}/nome/${nome}`, { headers });
+  }
+
   createCliente(cliente: any): Observable<Cliente> {
     const headers = this.getHeaders();
 
     return this.HttpClient.post<Cliente>(this.apiUrl, cliente, { headers });
-
   } 
 
   createUsuarioCliente(nome: string): Observable<any> {

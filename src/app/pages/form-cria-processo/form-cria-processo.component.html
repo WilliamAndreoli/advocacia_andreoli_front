@@ -1,0 +1,149 @@
+<section id="form-cliente-component">
+    <div class="container my-4">
+        <div class="row">
+            <div class="col bg-gray">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mb-3 text-light">Criar Processo:</h2>
+                    </div>
+    
+                    <div class="card-body">
+                        <form [formGroup]="processoForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                  <label class="form-label">Número do Processo</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="numeroProcesso"
+                                    placeholder="Insira o número do processo"
+                                  >
+                                </div>
+                
+                                <div class="col-md-6">
+                                  <label class="form-label">Juiz</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="juiz"
+                                    placeholder="Insira o juiz"
+                                  >
+                                </div>
+                
+                                <div class="col-md-6">
+                                  <label class="form-label">Área</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="area"
+                                    placeholder="Insir"
+                                  >
+                                </div>
+                
+                                <div class="col-md-6">
+                                  <label class="form-label">Comarca</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="comarca"
+                                    placeholder="Insira a comarca"
+                                  >
+                                </div>
+                
+                                <div class="col-md-6">
+                                  <label class="form-label">Status</label>
+                                  <select 
+                                    class="form-control" 
+                                    formControlName="status">
+                                    <option value="">
+                                      Selecione um Status
+                                    </option>
+                                    <option value="INICIAL">
+                                      INICIAL
+                                    </option>
+                                    <option value="CONCLUSO_JULGAMENTO">
+                                      CONCLUSO JULGAMENTO
+                                    </option>
+                                    <option value="SENTENCIADO">
+                                      SENTENCIADO
+                                    </option>
+                                    <option value="TRANSITO_JULGADO">
+                                      TRANSITO JULGADO
+                                    </option>
+                                    <option value="EM_RECURSO">
+                                      EM RECURSO
+                                    </option>                                    
+                                  </select>
+                                </div>
+                
+                                <div class="col-md-6">
+                                  <label class="form-label">Valor</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="valor_processo"
+                                    placeholder="Insira o valor do processo"
+                                  >
+                                </div>
+                
+                                <div class="col-md-6">
+                                    <label class="form-label">Advogado</label>
+                                    <mat-form-field appearance="outline">
+                                      <mat-label>Selecionar Advogado</mat-label>
+                                      <input 
+                                        matInput 
+                                        formControlName="advogado" 
+                                        [matAutocomplete]="autoAdvogado">
+                                      <mat-autocomplete #autoAdvogado="matAutocomplete">
+                                        @for (advogado of (filteredAdvogados | async); track $index) {
+                                            <mat-option [value]="advogado.nome">
+                                                {{ advogado.nome }}
+                                              </mat-option>
+                                        }
+                                      </mat-autocomplete>
+                                    </mat-form-field>
+                                  </div>
+                                  
+                                  <div class="col-md-6">
+                                    <label class="form-label">Cliente</label>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Selecionar Cliente</mat-label>
+                                      <input 
+                                        matInput 
+                                        formControlName="cliente" 
+                                        [matAutocomplete]="autoCliente">
+                                      <mat-autocomplete #autoCliente="matAutocomplete">
+                                        @for (cliente of (filteredClientes | async ); track $index) {
+                                            <mat-option [value]="cliente.nome">
+                                                {{ cliente.nome }}
+                                              </mat-option>
+                                        }
+                                      </mat-autocomplete>
+                                    </mat-form-field>
+                                  </div>
+
+                              <div class="mt-4 d-flex justify-content-between">
+                                <a
+                                  type="button" 
+                                  class="btn btn-secondary" 
+                                    href="/processos-advogado"
+                                >
+                                  Cancelar
+                              </a>
+                                <button 
+                                  type="submit" 
+                                  class="btn btn-primary"
+                                  [disabled]="!processoForm.valid"
+                                  (click)="createProcesso()"
+                                >
+                                  Criar Processo
+                                </button>
+                                </div>
+                              </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

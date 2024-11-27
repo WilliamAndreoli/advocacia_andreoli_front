@@ -49,4 +49,12 @@ export class ProcessoService {
     });
   }
 
+  createProcesso(processo: any): Observable<Processo> {
+    const headers = this.getHeaders();
+
+    console.log(processo)
+
+    return this.HttpClient.post<Processo>(this.apiUrl, processo, { headers });
+  }
+
 }
