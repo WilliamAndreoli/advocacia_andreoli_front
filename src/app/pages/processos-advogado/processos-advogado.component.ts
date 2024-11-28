@@ -35,6 +35,9 @@ export class ProcessosAdvogadoComponent {
   totalPages = 0;
   totalElements = 0;
 
+  searchStatus = '';
+  pesquisarStatusForm!: FormGroup;
+
   constructor(
     private advogadoService: AdvogadoService,
     private processoService: ProcessoService,
@@ -44,6 +47,9 @@ export class ProcessosAdvogadoComponent {
   ) {
     this.pesquisarForm = new FormGroup({
       numeroProcesso: new FormControl('', [Validators.required]),
+    }),
+    this.pesquisarStatusForm = new FormGroup({
+      status: new FormControl('', [Validators.required])
     })
    }
 
@@ -84,7 +90,7 @@ export class ProcessosAdvogadoComponent {
   }
 
   buscarProcesso(): void {
-    this.searchTerm = this.pesquisarForm.value.numeroProcesso
+    this.searchTerm = this.pesquisarStatusForm.value.numeroProcesso
     if (!this.searchTerm.trim()) {
       //console.log(this.searchTerm)
       this.carregarProcessos(); // Recarrega todos os usuários se a pesquisa estiver vazia
@@ -96,6 +102,27 @@ export class ProcessosAdvogadoComponent {
     this.processoService.getProcessoPorNumeroProcesso(this.searchTerm).subscribe({
       next: (processo) => {
         this.processos = [processo];
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar processos:', error);
+      }
+    })
+  }
+
+  buscarProcessoPorStatus(): void {
+    this.searchStatus = this.pesquisarStatusForm.value.status
+    if (!this.searchStatus.trim()) {
+      //console.log(this.searchTerm)
+      this.carregarProcessos(); // Recarrega todos os usuários se a pesquisa estiver vazia
+      return;
+    }
+
+    this.loading = true;
+    this.error = '';
+    this.processoService.getAllProcessosPorStatus(this.searchStatus).subscribe({
+      next: (processo) => {
+        this.processos = processo.content;
         this.loading = false;
       },
       error: (error) => {

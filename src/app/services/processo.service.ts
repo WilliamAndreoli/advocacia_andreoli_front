@@ -49,6 +49,19 @@ export class ProcessoService {
     });
   }
 
+  getAllProcessosPorStatus(status: string, page: number = 0, size: number = 10): Observable<any> {
+    const headers = this.getHeaders();
+    //console.log(numeroOrdem)
+    //console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
+    return this.HttpClient.get<Processo[]>(`${this.apiUrl}/status/${status}`, { 
+      headers, 
+      params: {
+        page: page.toString(),
+        size: size.toString()
+      } 
+    });
+  }
+
   atualizarProcesso(numeroProcesso: string, dadosProcesso: Processo): Observable<any> {
     const headers = this.getHeaders();
 
