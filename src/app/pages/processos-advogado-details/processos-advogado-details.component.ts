@@ -57,6 +57,5 @@ export class ProcessosAdvogadoDetailsComponent implements OnInit{
   editarProcesso() {
     this.router.navigate(['/processos-edicao']);
   }
-  
 
 }

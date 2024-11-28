@@ -55,6 +55,12 @@ export class ProcessoService {
     return this.HttpClient.put<Processo>(`${this.apiUrl}/numeroProcesso/${numeroProcesso}`, dadosProcesso, { headers });
   }
 
+  alterarStatusPocesso(numeroProcesso: string): Observable<any> {
+    const headers = this.getHeaders();
+
+    return this.HttpClient.put<Processo>(`${this.apiUrl}/status/${numeroProcesso}`, { headers });
+  }
+
   createProcesso(processo: any): Observable<Processo> {
     const headers = this.getHeaders();
 
