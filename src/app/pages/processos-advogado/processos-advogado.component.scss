@@ -46,3 +46,99 @@
     background-color: #ffd82f;
     color: black;
 }
+
+.bg-gray {
+    background-color: #1E1E1E;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+h5 {
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    font-size: 1.2em !important;
+}
+
+h6 {
+    font-size: 1rem !important;
+}
+
+p {
+    font-size: 1rem !important;
+}
+
+.consulta-card {
+    transition: transform 0.2s;
+    border-left: 4px solid #ffd82f;
+}
+
+.consulta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-outline-primary {
+    border-color: #ffd82f;
+    color: black;
+}
+
+.btn-primary {
+    background-color: #ffd82f;
+    border-color: #ffd82f;
+    color: black;
+}
+
+.btn-primary:hover {
+    background-color: #ffc107;
+    border-color: #ffd82f;
+    color: black;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ffd82f;
+}
+
+.btn-group > .active {
+    background-color: #ffd82f;
+}
+
+.badge-pending {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.badge-completed {
+    background-color: #198754;
+    color: #fff;
+}
+  
+.badge-paid {
+    background-color: #0dcaf0;
+    color: #000;
+}
+  
+.search-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.filters {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.page-link {
+    background-color: #1e1e1e;
+    border: #ffd82f 0.5px solid;
+    color: white;
+}
+
+.active > .page-link {
+    background-color: #ffd82f;
+    color: black;
+}
