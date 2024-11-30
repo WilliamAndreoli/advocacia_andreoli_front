@@ -8,9 +8,9 @@
           <a href="/advogado" class="btn btn-primary">
             <i class="fas fa-arrow-left me-2"></i>Voltar
           </a>
-          <button class="btn btn-primary">
+          <a href="/cria-consulta" class="btn btn-primary">
             <i class="fas fa-plus me-2"></i>Nova Consulta
-          </button>
+          </a>
         </div>
 
         <div class="search-box">
@@ -62,6 +62,8 @@
                         <strong>Valor:</strong> R$ {{ consulta.valor }},00
                         @if (consulta.pagamento == "PAGO") {
                           <span class="badge badge-paid ms-2">{{ consulta.pagamento }}</span>
+                        } @else {
+                          <span class="badge badge-notpaid ms-2">{{ consulta.pagamento }}</span>
                         }
                       </p>
                       <p class="mb-2">

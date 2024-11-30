@@ -1,0 +1,67 @@
+<section id="form-cliente-component">
+    <div class="container my-4">
+        <div class="row">
+            <div class="col bg-gray">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mb-3 text-light">Criar Consulta:</h2>
+                    </div>
+    
+                    <div class="card-body">
+                        <form [formGroup]="consultaForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                  <label class="form-label">Valor</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="valor"
+                                    placeholder="Insira o valor"
+                                  >
+                                </div>
+                
+                                <div class="col-md-6">
+                                    <label class="form-label">Data da Consulta</label>
+                                    <input 
+                                      type="datetime-local" 
+                                      class="form-control" 
+                                      formControlName="data_marcada"
+                                    >
+                                  </div>
+                
+                                <div class="col-md-6">
+                                  <label class="form-label">Cliente</label>
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    formControlName="cliente"
+                                    placeholder="XXXXXXXXXXX"
+                                  >
+                                </div>
+                
+                                
+                              </div>
+
+                              <div class="mt-4 d-flex justify-content-between">
+                                <a
+                                  type="button" 
+                                  class="btn btn-secondary" 
+                                    href="/consultas-advogado"
+                                >
+                                  Cancelar
+                              </a>
+                                <button 
+                                  type="submit" 
+                                  class="btn btn-primary"
+                                  (click)="createConsulta()"
+                                >
+                                  Criar Consulta
+                                </button>
+                              </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

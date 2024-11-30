@@ -58,7 +58,7 @@ export class ProcessoEdicaoComponent implements OnInit{
       this.processoService.atualizarProcesso(this.numeroProcesso, dadosProcesso).subscribe({
         next: () => {
           //console.log(dadosCliente)
-          this.router.navigate(['/clientes-advogado']);
+          this.router.navigate(['/processos-advogado']);
         },
         error: (error) => {
           console.error('Erro ao salvar processo', error);

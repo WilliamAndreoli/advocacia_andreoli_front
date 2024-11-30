@@ -40,4 +40,10 @@ export class ConsultaService {
     });
   }
 
+  createConsulta(consulta: any): Observable<Consulta> {
+    const headers = this.getHeaders();
+
+    return this.HttpClient.post<Consulta>(this.apiUrl, consulta, { headers });
+  } 
+
 }
