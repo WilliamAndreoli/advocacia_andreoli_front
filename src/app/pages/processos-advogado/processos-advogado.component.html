@@ -17,13 +17,25 @@
                 <div class="row">
                   <div class="col-md-6">
                     <form [formGroup]="pesquisarForm">
-                    <div class="input-group">
-                      <input type="text" formControlName="numeroProcesso" (keyup.enter)="buscarProcesso()" class="form-control" placeholder="Pesquisar cpf...">
-                      <button (click)="buscarProcesso()" class="btn btn-primary">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </form>
+                      <div class="input-group">
+                        <select formControlName="tipoPesquisa" class="form-control" style="max-width: 150px;">
+                          <option value="">Tipo</option>
+                          <option value="numeroProcesso">Nº Processo</option>
+                          <option value="cpf">CPF</option>
+                          <option value="comarca">Comarca</option>
+                        </select>
+                        <input 
+                          type="text" 
+                          formControlName="searchTerm" 
+                          (keyup.enter)="buscarProcesso()" 
+                          class="form-control" 
+                          [placeholder]="getPlaceholderTexto()"
+                        >
+                        <button (click)="buscarProcesso()" class="btn btn-primary">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </form>
                   </div>
               
                   <div class="col-md-6">
@@ -97,6 +109,10 @@
                           <p class="mb-2">
                             <i class="fas fa-file-alt me-2"></i>
                             <strong>Comarca:</strong> {{ processo.comarca }}
+                          </p>
+                          <p class="mb-2">
+                            <i class="fas fa-file-alt me-2"></i>
+                            <strong>Área:</strong> {{ processo.area }}
                           </p>
                         </div>
                         

@@ -36,7 +36,7 @@ export class ProcessoService {
     return this.HttpClient.get<Processo[]>(`${this.apiUrl}/cliente/${cpf}`, { headers });
   }
 
-  getAllProcessosPorAdvogado(numeroOrdem: string, page: number = 0, size: number = 10): Observable<any> {
+  getAllProcessosPorAdvogado(numeroOrdem: string, page: number = 0, size: number = 6): Observable<any> {
     const headers = this.getHeaders();
     //console.log(numeroOrdem)
     //console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
@@ -49,7 +49,20 @@ export class ProcessoService {
     });
   }
 
-  getAllProcessosPorStatus(status: string, page: number = 0, size: number = 10): Observable<any> {
+  getAllProcessosPorComarca(comarca: string, page: number = 0, size: number = 6) {
+    const headers = this.getHeaders();
+    //console.log(numeroOrdem)
+    //console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)
+    return this.HttpClient.get<any>(`${this.apiUrl}/comarca/${comarca}`, { 
+      headers, 
+      params: {
+        page: page.toString(),
+        size: size.toString()
+      } 
+    });
+  }
+
+  getAllProcessosPorStatus(status: string, page: number = 0, size: number = 6): Observable<any> {
     const headers = this.getHeaders();
     //console.log(numeroOrdem)
     //console.log(`${this.apiUrl}/advogado/${numeroOrdem}`)

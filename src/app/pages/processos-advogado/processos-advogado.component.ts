@@ -31,7 +31,7 @@ export class ProcessosAdvogadoComponent {
   pesquisarForm!: FormGroup;
 
   currentPage = 0;
-  pageSize = 10;
+  pageSize = 6;
   totalPages = 0;
   totalElements = 0;
 
@@ -45,9 +45,6 @@ export class ProcessosAdvogadoComponent {
     private toastService: ToastrService,
     private router: Router
   ) {
-    this.pesquisarForm = new FormGroup({
-      numeroProcesso: new FormControl('', [Validators.required]),
-    }),
     this.pesquisarStatusForm = new FormGroup({
       status: new FormControl('', [Validators.required])
     })
@@ -55,6 +52,20 @@ export class ProcessosAdvogadoComponent {
 
    ngOnInit() {
     this.carregarAdvogado();
+    this.pesquisarForm = new FormGroup({
+      tipoPesquisa: new FormControl('', [Validators.required]),
+      searchTerm: new FormControl('', Validators.required)
+    })
+  }
+
+  getPlaceholderTexto(): string {
+    const tipoPesquisa = this.pesquisarForm.get('tipoPesquisa')?.value;
+    switch(tipoPesquisa) {
+      case 'numeroProcesso': return 'Pesquisar número...';
+      case 'cpf': return 'Pesquisar CPF...';
+      case 'comarca': return 'Pesquisar comarca...';
+      default: return 'Pesquisar...';
+    }
   }
 
   carregarAdvogado() {
@@ -90,7 +101,9 @@ export class ProcessosAdvogadoComponent {
   }
 
   buscarProcesso(): void {
-    this.searchTerm = this.pesquisarStatusForm.value.numeroProcesso
+    const tipoPesquisa = this.pesquisarForm.get('tipoPesquisa')?.value;
+    this.searchTerm = this.pesquisarForm.get('searchTerm')?.value;
+    
     if (!this.searchTerm.trim()) {
       //console.log(this.searchTerm)
       this.carregarProcessos(); // Recarrega todos os usuários se a pesquisa estiver vazia
@@ -99,15 +112,53 @@ export class ProcessosAdvogadoComponent {
 
     this.loading = true;
     this.error = '';
-    this.processoService.getProcessoPorNumeroProcesso(this.searchTerm).subscribe({
-      next: (processo) => {
-        this.processos = [processo];
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error('Erro ao carregar processos:', error);
-      }
-    })
+    switch(tipoPesquisa) {
+      case 'numeroProcesso':
+        this.processoService.getProcessoPorNumeroProcesso(this.searchTerm).subscribe({
+          next: (processo) => {
+            //console.log(processo)
+            this.processos = [processo];
+            this.loading = false;
+          },
+          error: (error) => {
+            console.error('Erro ao carregar processos:', error);
+            this.loading = false;
+            this.error = 'Processo não encontrado';
+          }
+        });
+        break;
+
+      case 'cpf':
+        this.processoService.getAllProcessosPorCliente(this.searchTerm).subscribe({
+          next: (processos) => {
+            //console.log(processos)
+            this.processos = processos;
+            this.loading = false;
+          },
+          error: (error) => {
+            console.error('Erro ao carregar processos por CPF:', error);
+            this.loading = false;
+            this.error = 'Nenhum processo encontrado para este CPF';
+          }
+        });
+        break;
+
+      case 'comarca':
+        // Adicione este método no seu serviço
+        this.processoService.getAllProcessosPorComarca(this.searchTerm).subscribe({
+          next: (processos) => {
+            //console.log(processos)
+            this.processos = processos.content;
+            this.loading = false;
+          },
+          error: (error) => {
+            console.error('Erro ao carregar processos por comarca:', error);
+            this.loading = false;
+            this.error = 'Nenhum processo encontrado para esta comarca';
+          }
+        });
+        break;
+    }
   }
 
   buscarProcessoPorStatus(): void {
