@@ -23,6 +23,7 @@ import { FormCriaProcessoComponent } from './pages/form-cria-processo/form-cria-
 import { ProcessosAdvogadoDetailsComponent } from './pages/processos-advogado-details/processos-advogado-details.component';
 import { ProcessoEdicaoComponent } from './pages/processo-edicao/processo-edicao.component';
 import { CriaConsultaComponent } from './pages/cria-consulta/cria-consulta.component';
+import { ConsultaAdvogadoDetailsComponent } from './pages/consulta-advogado-details/consulta-advogado-details.component';
 
 export const routes: Routes = [
     {
@@ -127,6 +128,11 @@ export const routes: Routes = [
     { 
         path: 'cria-consulta', 
         component: CriaConsultaComponent,
+        canActivate: [authGuard]
+    },
+    { 
+        path: 'consulta-details', 
+        component: ConsultaAdvogadoDetailsComponent,
         canActivate: [authGuard]
     },
     { 

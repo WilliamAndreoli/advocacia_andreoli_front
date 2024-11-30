@@ -1,0 +1,73 @@
+<app-adv-layout></app-adv-layout>
+
+<section>
+    <div class="container my-4">
+        <!-- Título e Botões -->
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center bg-gray p-3 rounded shadow-sm">
+                    <div class="d-flex align-items-center">
+                        <a (click)="retornarPagina()" class="btn btn-warning btn-sm me-3">
+                            <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </a>
+                        <h2 class="m-0">Informações do Processo</h2>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-2" >Editar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações do Cliente -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="bg-gray p-4 rounded shadow-sm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <h6>Valor da Consulta:</h6>
+                            <p class="text-muted">R$ {{ consulta.valor }}.00</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Status:</h6>
+                            <p class="text-muted">{{ consulta.status }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Data Marcada:</h6>
+                            <p class="text-muted">{{ consulta.dataMarcada.toString() | dataFormat }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Data Realizada:</h6>
+                            <p class="text-muted">{{ consulta.dataRealizada.toString() | dataFormat }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Pagamento:</h6>
+                            <p class="text-muted">{{ consulta.pagamento }}</p>
+                        </div>
+                        @if (consulta.pagamento == "PAGO") {
+                            <div class="col-md-6">
+                                <h6>Data do Pagamento:</h6>
+                                <p class="text-muted">{{ consulta.dataPagamento.toString() | dataFormat }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Meio de Pagamento:</h6>
+                                <p class="text-muted">{{ consulta.meioPagamento }}</p>
+                            </div>
+                        }
+                        
+                        <div class="col-md-6">
+                            <h6>Resumo da Consulta:</h6>
+                            <p class="text-muted">{{ consulta.resumo }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Cliente:</h6>
+                            <p class="text-muted">{{ consulta.cliente.nome }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -7,6 +7,7 @@ import { Consulta } from '../../interfaces/consulta';
 import { DataFormatPipe } from "../../pipes/data-format.pipe";
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consultas-advogado',
@@ -36,7 +37,8 @@ export class ConsultasAdvogadoComponent implements OnInit{
   constructor(
     private consultaService: ConsultaService,
     private http: HttpClient,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private router: Router
   ) {
     this.pesquisarForm = new FormGroup({
       cliente: new FormControl('', [Validators.required]),
@@ -88,6 +90,12 @@ export class ConsultasAdvogadoComponent implements OnInit{
         console.error('Erro ao carregar Consultas:', error);
       }
     })
+  }
+
+  exibirDetalhesConsulta(id: number) {
+    let idString = id.toString()
+    localStorage.setItem('idConsultaExibida', idString);
+    this.router.navigate(['/consulta-details'])
   }
 
 }
