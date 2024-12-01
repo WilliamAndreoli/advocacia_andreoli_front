@@ -98,4 +98,21 @@ export class ConsultasAdvogadoComponent implements OnInit{
     this.router.navigate(['/consulta-details'])
   }
 
+  concluirConsulta(id: number) {
+    this.consultaService.concluirConsulta(id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.toastService.success("Consulta concluida com sucesso!");
+        setTimeout(() => {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/consultas-advogado']);
+          });
+        }, 2000);
+      },
+      error: (error) => {
+        this.toastService.error("Erro ao alterar status da consulta!");
+      }
+    })
+  }
+
 }

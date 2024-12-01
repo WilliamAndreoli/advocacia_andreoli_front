@@ -13,6 +13,7 @@ export class ConsultaService {
 
   private getHeaders(): HttpHeaders {
     const token = sessionStorage.getItem('auth-token');
+    console.log(token)
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -50,5 +51,11 @@ export class ConsultaService {
 
     return this.HttpClient.post<Consulta>(this.apiUrl, consulta, { headers });
   } 
+
+  concluirConsulta(id: number) {
+    const headers = this.getHeaders();
+    
+    return this.HttpClient.put<Consulta>(`${this.apiUrl}/concluir/${id}`, {}, { headers });
+  }
 
 }
