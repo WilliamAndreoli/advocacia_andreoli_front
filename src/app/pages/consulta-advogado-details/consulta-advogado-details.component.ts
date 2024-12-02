@@ -56,4 +56,8 @@ export class ConsultaAdvogadoDetailsComponent implements OnInit{
     this.router.navigate(['/consultas-advogado']);
   }
 
+  editarConsulta() {
+    this.router.navigate(['/consulta-edicao']);
+  }
+
 }

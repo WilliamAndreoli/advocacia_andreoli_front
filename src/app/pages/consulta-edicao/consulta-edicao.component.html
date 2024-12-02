@@ -1,0 +1,84 @@
+<section id="form-cliente-component">
+    <div class="container my-4">
+        <div class="row">
+            <div class="col bg-gray">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mb-3 text-light">Concluir Pagamento da Consulta:</h2>
+                    </div>
+    
+                    <div class="card-body">
+                        <form [formGroup]="consultaForm">
+                            <div class="row g-3">
+
+                                  <div class="col-md-6">
+                                    <label class="form-label">Data do Pagamento</label>
+                                    <input 
+                                      type="datetime-local" 
+                                      class="form-control" 
+                                      formControlName="data_pagamento"
+                                    >
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <label class="form-label">Pagamento</label>
+                                    <select 
+                                      class="form-control" 
+                                      formControlName="pagamento">
+                                      <option value="">
+                                        Selecione se foi pago ou não
+                                      </option>
+                                      <option value="PAGO">
+                                        PAGO
+                                      </option>
+                                      <option value="N_PAGO">
+                                        N_PAGO
+                                      </option>               
+                                    </select>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <label class="form-label">Meio de Pagamento</label>
+                                    <select 
+                                      class="form-control" 
+                                      formControlName="meio_pagamento">
+                                      <option value="">
+                                        Selecione um meio de pagamento
+                                      </option>
+                                      <option value="PIX">
+                                        PIX
+                                      </option>
+                                      <option value="ESPECIE">
+                                        ESPÉCIE
+                                      </option>
+                                      <option value="OUTRO">
+                                        OUTRO
+                                      </option>                      
+                                    </select>
+                                  </div>
+                                
+                              </div>
+
+                              <div class="mt-4 d-flex justify-content-between">
+                                <a
+                                  type="button" 
+                                  class="btn btn-secondary" 
+                                    href="/consulta-details"
+                                >
+                                  Cancelar
+                              </a>
+                                <button 
+                                  type="submit" 
+                                  class="btn btn-success"
+                                  (click)="concluirPagamento()"
+                                >
+                                  Concluir Pagamento
+                                </button>
+                              </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

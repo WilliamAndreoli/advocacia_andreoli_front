@@ -15,7 +15,10 @@
                         <h2 class="m-0">Informações do Processo</h2>
                     </div>
                     <div>
-                        <button class="btn btn-primary me-2" >Editar</button>
+                        @if (consulta.pagamento == "N_PAGO") {
+                            <button (click)="editarConsulta()" class="btn btn-success me-2" >Concluir Pagamento</button>
+                        }
+                        
                     </div>
                 </div>
             </div>
@@ -38,14 +41,19 @@
                             <h6>Data Marcada:</h6>
                             <p class="text-muted">{{ consulta.dataMarcada.toString() | dataFormat }}</p>
                         </div>
-                        <div class="col-md-6">
-                            <h6>Data Realizada:</h6>
-                            <p class="text-muted">{{ consulta.dataRealizada.toString() | dataFormat }}</p>
-                        </div>
+                        @if (consulta.dataRealizada != null) {
+                            <div class="col-md-6">
+                                <h6>Data Realizada:</h6>
+                                <p class="text-muted">{{ consulta.dataRealizada.toString() | dataFormat }}</p>
+                            </div>
+                        }
+                        
+
                         <div class="col-md-6">
                             <h6>Pagamento:</h6>
                             <p class="text-muted">{{ consulta.pagamento }}</p>
                         </div>
+                        
                         @if (consulta.pagamento == "PAGO") {
                             <div class="col-md-6">
                                 <h6>Data do Pagamento:</h6>
@@ -55,7 +63,9 @@
                                 <h6>Meio de Pagamento:</h6>
                                 <p class="text-muted">{{ consulta.meioPagamento }}</p>
                             </div>
-                        }
+                        } 
+                        
+
                         
                         <div class="col-md-6">
                             <h6>Resumo da Consulta:</h6>

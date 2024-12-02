@@ -13,7 +13,6 @@ export class ConsultaService {
 
   private getHeaders(): HttpHeaders {
     const token = sessionStorage.getItem('auth-token');
-    console.log(token)
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -56,6 +55,12 @@ export class ConsultaService {
     const headers = this.getHeaders();
     
     return this.HttpClient.put<Consulta>(`${this.apiUrl}/concluir/${id}`, {}, { headers });
+  }
+
+  concluirPagamentoConsulta(id: number, consulta: any): Observable<Consulta> {
+    const headers = this.getHeaders();
+
+    return this.HttpClient.put<Consulta>(`${this.apiUrl}/pagar/${id}`, consulta, { headers })
   }
 
 }
