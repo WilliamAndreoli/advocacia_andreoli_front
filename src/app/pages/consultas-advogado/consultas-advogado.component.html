@@ -28,9 +28,9 @@
             <div class="col-md-6">
               <div class="filters">
                 <div class="btn-group" role="group">
-                  <button class="btn btn-outline-primary active">Todas</button>
-                  <button class="btn btn-outline-primary">Pendentes</button>
-                  <button class="btn btn-outline-primary">Realizadas</button>
+                  <button (click)="buscarConsultaStatus('')" class="btn btn-outline-primary active">Todas</button>
+                  <button (click)="buscarConsultaStatus('PENDENTE')" class="btn btn-outline-primary">Pendentes</button>
+                  <button (click)="buscarConsultaStatus('REALIZADA')" class="btn btn-outline-primary">Realizadas</button>
                 </div>
               </div>
             </div>

@@ -70,7 +70,12 @@ export class ConsultaEdicaoComponent implements OnInit{
     
     this.consultaService.concluirPagamentoConsulta(this.idConsulta, consulta).subscribe({
       next: (response) => {
-        this.toast.success("Pagamneto efetuado com sucesso!");
+        this.toast.success("Pagamento efetuado com sucesso!");
+        setTimeout(() => {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/consulta-details']);
+          });
+        }, 2000); // 2 segundos de delay
       },
       error: (error) => {
         this.toast.error("Erro ao realizar pagamento!")

@@ -33,6 +33,16 @@ export class ConsultaService {
     const headers = this.getHeaders();
     return this.HttpClient.get<Consulta>(`${this.apiUrl}/id/${id}`, { headers });
   }
+
+  getConsultaPorStatus(page: number = 0, size: number = 10, status: string) {
+    const headers = this.getHeaders();
+    return this.HttpClient.get<any>(`${this.apiUrl}/status/${status}`, { headers, 
+      params: {
+        page: page.toString(),
+        size: size.toString()
+      } 
+     });
+  }
   
   getAllConsultasPageable(page: number = 0, size: number = 10): Observable<any> {
     const headers = this.getHeaders();

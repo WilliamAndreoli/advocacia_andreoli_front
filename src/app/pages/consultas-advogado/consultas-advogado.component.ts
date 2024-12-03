@@ -34,6 +34,9 @@ export class ConsultasAdvogadoComponent implements OnInit{
   searchTerm: string = ''
   pesquisarForm!: FormGroup;
 
+  filtro = false;
+  statusFiltro = '';
+
   constructor(
     private consultaService: ConsultaService,
     private http: HttpClient,
@@ -68,8 +71,14 @@ export class ConsultasAdvogadoComponent implements OnInit{
 
   mudarPagina(page: number) {
     this.currentPage = page;
-    this.carregarConsultas();
-  }
+
+    if (this.filtro == true) {
+      this.buscarConsultaStatus(this.statusFiltro);  
+    } else {
+      this.carregarConsultas();
+    }
+
+   }
 
   buscarConsulta(): void {
     this.searchTerm = this.pesquisarForm.value.cliente
@@ -85,6 +94,30 @@ export class ConsultasAdvogadoComponent implements OnInit{
       next: (consultas) => {
         this.consultas = consultas;
         this.loading = false;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar Consultas:', error);
+      }
+    })
+  }
+
+  buscarConsultaStatus(status: string): void {
+    if (status == '') {
+      //console.log(this.searchTerm)
+      this.carregarConsultas(); // Recarrega todos os usuários se a pesquisa estiver vazia
+      this.filtro = false;
+      return;
+    }
+
+    this.loading = true;
+    this.error = '';
+    this.statusFiltro = status;
+    this.consultaService.getConsultaPorStatus(this.currentPage, this.pageSize, status).subscribe({
+      next: (response) => {
+        //console.log(response)
+        this.consultas = response.content;
+        this.loading = false;
+        this.filtro = true;
       },
       error: (error) => {
         console.error('Erro ao carregar Consultas:', error);
