@@ -5,7 +5,6 @@ import { DireitoCivilComponent } from './pages/direito-civil/direito-civil.compo
 import { DireitoTrabalhoComponent } from './pages/direito-trabalho/direito-trabalho.component';
 import { DireitoPreviComponent } from './pages/direito-previ/direito-previ.component';
 import { DireitoConsumidorComponent } from './pages/direito-consumidor/direito-consumidor.component';
-import { EsqueciMinhaSenhaComponent } from './pages/esqueci-minha-senha/esqueci-minha-senha.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CriarUsuarioComponent } from './pages/criar-usuario/criar-usuario.component';
 import { FormAlteraUsuarioComponent } from './pages/form-altera-usuario/form-altera-usuario.component';

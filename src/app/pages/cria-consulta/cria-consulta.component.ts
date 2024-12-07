@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConsultaService } from '../../services/consulta.service';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from '../../services/cliente.service';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cria-consulta',
@@ -13,7 +15,7 @@ import { ClienteService } from '../../services/cliente.service';
   templateUrl: './cria-consulta.component.html',
   styleUrl: './cria-consulta.component.scss'
 })
-export class CriaConsultaComponent {
+export class CriaConsultaComponent implements OnInit{
   consultaForm!: FormGroup;
 
   cliente: any;
@@ -21,13 +23,24 @@ export class CriaConsultaComponent {
   constructor(
     private consultaService: ConsultaService,
     private clienteService: ClienteService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private loginService: LoginService,
+    private router: Router
   ) {
       this.consultaForm = new FormGroup({
         valor: new FormControl('', Validators.required),
         data_marcada: new FormControl(Date, [Validators.required]),
         cliente: new FormControl('', [Validators.required, Validators.maxLength(11)])
       })
+  }
+
+  ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
   }
 
   createConsulta() {

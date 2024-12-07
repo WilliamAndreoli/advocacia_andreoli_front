@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ProcessoService } from '../../services/processo.service';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../interfaces/cliente';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-processos-cliente',
@@ -27,12 +28,20 @@ export class ProcessosClienteComponent implements OnInit{
     private processoService: ProcessoService,
     private http: HttpClient,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
 
    }
 
-   ngOnInit() {
+  ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.carregarCliente();
   }
 

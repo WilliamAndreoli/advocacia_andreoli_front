@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClienteService } from '../../services/cliente.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-cria-cliente',
@@ -12,12 +14,14 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './form-cria-cliente.component.html',
   styleUrl: './form-cria-cliente.component.scss'
 })
-export class FormCriaClienteComponent {
+export class FormCriaClienteComponent implements OnInit{
   clienteForm!: FormGroup;
 
   constructor(
     private clienteService: ClienteService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private loginService: LoginService,
+    private router: Router
   ) {
       this.clienteForm = new FormGroup({
         nome: new FormControl('', Validators.required),
@@ -32,6 +36,15 @@ export class FormCriaClienteComponent {
         cnh: new FormControl(''),
         dataNascimento: new FormControl(Date, [Validators.required])
       })
+  }
+
+  ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
   }
 
   createCliente() {

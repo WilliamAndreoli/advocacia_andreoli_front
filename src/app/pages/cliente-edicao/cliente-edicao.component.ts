@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClienteService } from '../../services/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-cliente-edicao',
@@ -20,6 +21,7 @@ export class ClienteEdicaoComponent implements OnInit{
     private fb: FormBuilder,
     private clienteService: ClienteService,
     private route: ActivatedRoute,
+    private loginService: LoginService,
     private router: Router
   ) {
     this.clienteForm = new FormGroup({
@@ -38,6 +40,13 @@ export class ClienteEdicaoComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.clienteCpf = localStorage.getItem("cpfClienteExibido");
     this.carregarDadosCliente();
   }

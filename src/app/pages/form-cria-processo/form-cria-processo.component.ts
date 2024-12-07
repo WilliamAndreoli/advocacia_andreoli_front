@@ -13,6 +13,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { map, Observable, of, startWith } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { forEachChild } from 'typescript';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-cria-processo',
@@ -40,7 +42,9 @@ export class FormCriaProcessoComponent implements OnInit{
     private processoService: ProcessoService,
     private toastService: ToastrService,
     private clienteService: ClienteService,
-    private advogadoService: AdvogadoService
+    private advogadoService: AdvogadoService,
+    private loginService: LoginService,
+    private router: Router
   ) {
       this.processoForm = new FormGroup({
         numeroProcesso: new FormControl('', Validators.required),
@@ -55,6 +59,14 @@ export class FormCriaProcessoComponent implements OnInit{
   }
 
   ngOnInit() {
+
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.clienteService.getAllClientes().subscribe({
       next: (response) => {
         //console.log(response)

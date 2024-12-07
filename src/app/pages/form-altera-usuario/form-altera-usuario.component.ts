@@ -4,6 +4,8 @@ import { UsuarioService } from '../../services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorResponse } from '../../types/error-response.type';
 import { throwError } from 'rxjs';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-altera-usuario',
@@ -17,14 +19,16 @@ import { throwError } from 'rxjs';
     UsuarioService
   ]
 })
-export class FormAlteraUsuarioComponent {
+export class FormAlteraUsuarioComponent implements OnInit{
   email: any = sessionStorage.getItem("alteraUsuarioNome")
 
   formAlterar!: FormGroup;
   
   constructor(
     private usuarioService: UsuarioService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.formAlterar = new FormGroup({
       username: new FormControl(),
@@ -32,6 +36,15 @@ export class FormAlteraUsuarioComponent {
       password: new FormControl(),
       tipoUsuario: new FormControl()
     })
+  }
+
+  ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
   }
 
   alteraUsuario() {

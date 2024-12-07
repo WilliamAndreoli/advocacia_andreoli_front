@@ -8,6 +8,7 @@ import { DataFormatPipe } from "../../pipes/data-format.pipe";
 import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-consultas-advogado',
@@ -41,7 +42,8 @@ export class ConsultasAdvogadoComponent implements OnInit{
     private consultaService: ConsultaService,
     private http: HttpClient,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     this.pesquisarForm = new FormGroup({
       cliente: new FormControl('', [Validators.required]),
@@ -49,6 +51,13 @@ export class ConsultasAdvogadoComponent implements OnInit{
   }
 
   ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.carregarConsultas()
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
@@ -7,6 +7,8 @@ import { TipoUsuario } from '../../interfaces/tipoUsuario';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorResponse } from '../../types/error-response.type';
 import { throwError } from 'rxjs';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-criar-usuario',
@@ -20,12 +22,14 @@ import { throwError } from 'rxjs';
     UsuarioService
   ]
 })
-export class CriarUsuarioComponent {
+export class CriarUsuarioComponent implements OnInit{
   usuarioForm!: FormGroup;
 
   constructor(
     private usuarioService: UsuarioService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private loginService: LoginService,
+    private router: Router
   ) {
       this.usuarioForm = new FormGroup({
         username: new FormControl('', [Validators.required, Validators.email]),
@@ -33,6 +37,15 @@ export class CriarUsuarioComponent {
         password: new FormControl('', [Validators.required, Validators.minLength(6)]),
         tipoUsuario: new FormControl('', Validators.required)
       })
+  }
+
+  ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
   }
   
   onSubmit() {

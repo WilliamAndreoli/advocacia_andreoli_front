@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ClienteEdicaoComponent } from '../cliente-edicao/cliente-edicao.component';
 import { DataFormatPipe } from '../../pipes/data-format.pipe';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-clientes-advogado-details',
@@ -28,12 +29,20 @@ export class ClientesAdvogadoDetailsComponent implements OnInit{
     private clienteService: ClienteService,
     private http: HttpClient,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
 
    }
 
   ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.carregaCliente();
   }
 

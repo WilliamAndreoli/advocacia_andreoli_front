@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AdvogadoService } from '../../services/advogado.service';
 import { AdvLayoutComponent } from '../../layout/adv-layout/adv-layout.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-processos-advogado',
@@ -43,7 +44,8 @@ export class ProcessosAdvogadoComponent {
     private processoService: ProcessoService,
     private http: HttpClient,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     this.pesquisarStatusForm = new FormGroup({
       status: new FormControl('', [Validators.required])
@@ -51,6 +53,13 @@ export class ProcessosAdvogadoComponent {
    }
 
    ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.carregarAdvogado();
     this.pesquisarForm = new FormGroup({
       tipoPesquisa: new FormControl('', [Validators.required]),

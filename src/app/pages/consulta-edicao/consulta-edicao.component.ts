@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { ConsultaService } from '../../services/consulta.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-consulta-edicao',
@@ -22,16 +23,24 @@ export class ConsultaEdicaoComponent implements OnInit{
     private consultaService: ConsultaService,
     private route: ActivatedRoute,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private loginService: LoginService
   ) {
     this.consultaForm = new FormGroup({
       pagamento: new FormControl(''),
       data_pagamento: new FormControl(''),
-      meio_pagamento: new FormControl('')
+      meio_pagamento: new FormControl(''),
     })
   }
 
   ngOnInit(): void {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.idConsulta = localStorage.getItem("idConsultaExibida");
     this.carregarDadosConsulta();
   }

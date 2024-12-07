@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-clientes-advogado',
@@ -34,7 +35,8 @@ export class ClientesAdvogadoComponent implements OnInit{
     private clienteService: ClienteService,
     private http: HttpClient,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {
     this.pesquisarForm = new FormGroup({
       cpf: new FormControl('', [Validators.required]),
@@ -42,6 +44,13 @@ export class ClientesAdvogadoComponent implements OnInit{
    }
 
    ngOnInit() {
+    if (this.loginService.isTokenExpired()) {
+      //console.log("Token expirado, por favor faça login novamente.");
+      this.router.navigate(['/login']);
+    } else {
+      //console.log("Token válido, pode prosseguir.");
+    }
+
     this.carregarClientes();
   }
 

@@ -18,15 +18,17 @@ export class LoginService {
       tap((value) => {
         const tokenInfo = this.decodeJWTToken(value.token);
 
-        //console.log("Informações do token:", tokenInfo);
-
-        sessionStorage.setItem("auth-token", value.token);
-        sessionStorage.setItem("userName", tokenInfo.userName);
-        sessionStorage.setItem("name", tokenInfo.name);
-        sessionStorage.setItem("authorities", tokenInfo.authorities);
+        //console.log("Informações do token:", tokenInfo)
 
         if (tokenInfo) {
+          const expirationDate = new Date(tokenInfo.exp * 1000);
+          sessionStorage.setItem("auth-token", value.token);
+          sessionStorage.setItem("userName", tokenInfo.userName);
+          sessionStorage.setItem("name", tokenInfo.name);
+          sessionStorage.setItem("authorities", tokenInfo.authorities);
           sessionStorage.setItem("userId", tokenInfo.id);
+          sessionStorage.setItem("token-expiration", expirationDate.toISOString());
+          //console.log(expirationDate)
         }
 
       })
@@ -46,6 +48,17 @@ export class LoginService {
       console.error('Erro ao decodificar token:', error);
       return null;
     }
+  }
+
+  isTokenExpired(): boolean {
+    const expiration = sessionStorage.getItem("token-expiration");
+    if (expiration) {
+      const expirationDate = new Date(expiration); // UTC
+      const now = new Date(); // Também no horário local, mas o JS ajusta para comparar UTC internamente
+      console.log("Expirationdate: ", expirationDate, "now: ", now)
+      return expirationDate <= now; // Comparação direta
+    }
+    return true; // Considera expirado se não houver data
   }
 
 }
