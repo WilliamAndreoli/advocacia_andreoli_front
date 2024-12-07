@@ -116,6 +116,9 @@ export class ConsultasAdvogadoComponent implements OnInit{
       next: (response) => {
         //console.log(response)
         this.consultas = response.content;
+        this.consultas = response.content;
+        this.totalPages = response.totalPages;
+        this.totalElements = response.totalElements;
         this.loading = false;
         this.filtro = true;
       },

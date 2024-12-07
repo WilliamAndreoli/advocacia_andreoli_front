@@ -25,6 +25,7 @@ import { ProcessoEdicaoComponent } from './pages/processo-edicao/processo-edicao
 import { CriaConsultaComponent } from './pages/cria-consulta/cria-consulta.component';
 import { ConsultaAdvogadoDetailsComponent } from './pages/consulta-advogado-details/consulta-advogado-details.component';
 import { ConsultaEdicaoComponent } from './pages/consulta-edicao/consulta-edicao.component';
+import { ClienteAgendarConsultaComponent } from './pages/cliente-agendar-consulta/cliente-agendar-consulta.component';
 
 export const routes: Routes = [
     {
@@ -139,6 +140,11 @@ export const routes: Routes = [
     { 
         path: 'consulta-edicao', 
         component: ConsultaEdicaoComponent,
+        canActivate: [authGuard]
+    },
+    { 
+        path: 'agendar-consulta', 
+        component: ClienteAgendarConsultaComponent,
         canActivate: [authGuard]
     },
     { 

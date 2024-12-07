@@ -55,7 +55,7 @@ export class ProcessosClienteComponent implements OnInit{
     this.processoService.getAllProcessosPorCliente(this.cpf).subscribe({
       next: (response) => {
         this.processos = response;
-        console.log(this.processos)
+        //console.log(this.processos)
         this.loading = false;
       },
       error: (error) => {

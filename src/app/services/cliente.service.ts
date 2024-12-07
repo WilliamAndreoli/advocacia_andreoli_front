@@ -37,7 +37,7 @@ export class ClienteService {
     });
   }
 
-  getClientePorCpf(cpf: string): Observable<Cliente> {
+  getClientePorCpf(cpf: string | null): Observable<Cliente> {
     const headers = this.getHeaders();
     return this.HttpClient.get<Cliente>(`${this.apiUrl}/cpf/${cpf}`, { headers });
   }

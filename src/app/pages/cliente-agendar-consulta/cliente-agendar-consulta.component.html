@@ -1,0 +1,48 @@
+<app-cliente-layout></app-cliente-layout>
+
+<section id="cliente-agendar-consulta">
+    <div class="container">
+        <div class="col mt-4 bg-gray">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class=""><i class="fas fa-solid fa-calendar me-2"></i>Agende uma Consulta</h2>
+              <a href="/cliente" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-2"></i>Voltar
+              </a>
+            </div>
+
+            <div class="card-body">
+                <form [formGroup]="consultaForm">
+                    <div class="row g-3">
+        
+                        <div class="col-md-6">
+                            <label class="form-label">Selecione a Data Desejada</label>
+                            <input 
+                              type="datetime-local" 
+                              class="form-control" 
+                              formControlName="dataMarcada"
+                            >
+                          </div>
+                        
+                      </div>
+
+                      <div class="mt-4 d-flex justify-content-between">
+                        <a
+                          type="button" 
+                          class="btn btn-secondary" 
+                            href="/consultas-advogado"
+                        >
+                          Cancelar
+                      </a>
+                        <button 
+                          type="submit" 
+                          class="btn btn-primary"
+                          (click)="createConsulta()"
+                        >
+                          Agendar Consulta
+                        </button>
+                      </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
