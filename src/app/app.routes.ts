@@ -25,6 +25,7 @@ import { CriaConsultaComponent } from './pages/cria-consulta/cria-consulta.compo
 import { ConsultaAdvogadoDetailsComponent } from './pages/consulta-advogado-details/consulta-advogado-details.component';
 import { ConsultaEdicaoComponent } from './pages/consulta-edicao/consulta-edicao.component';
 import { ClienteAgendarConsultaComponent } from './pages/cliente-agendar-consulta/cliente-agendar-consulta.component';
+import { ConfigContaComponent } from './pages/config-conta/config-conta.component';
 
 export const routes: Routes = [
     {
@@ -144,6 +145,11 @@ export const routes: Routes = [
     { 
         path: 'agendar-consulta', 
         component: ClienteAgendarConsultaComponent,
+        canActivate: [authGuard]
+    },
+    { 
+        path: 'config-conta', 
+        component: ConfigContaComponent,
         canActivate: [authGuard]
     },
     { 
