@@ -10,5 +10,6 @@ export interface Consulta {
     meioPagamento: string;
     resumo: string;
     status: string;
+    statusAI: string;
     cliente: Cliente;
 }

@@ -29,7 +29,7 @@ export class CriaConsultaComponent implements OnInit{
   ) {
       this.consultaForm = new FormGroup({
         valor: new FormControl('', Validators.required),
-        data_marcada: new FormControl(Date, [Validators.required]),
+        dataMarcada: new FormControl(Date, [Validators.required]),
         cliente: new FormControl('', [Validators.required, Validators.maxLength(11)])
       })
   }
@@ -46,7 +46,7 @@ export class CriaConsultaComponent implements OnInit{
   createConsulta() {
     if (this.consultaForm.valid) {
       const formValues = this.consultaForm.value;
-      const dataInput = new Date(formValues.data_marcada);
+      const dataInput = new Date(formValues.dataMarcada);
       const dataFormatada = this.formatarDataParaBackend(dataInput);
   
       
@@ -55,7 +55,7 @@ export class CriaConsultaComponent implements OnInit{
           // Cliente encontrado, agora cria a consulta
           const consulta = {
             valor: formValues.valor,
-            data_marcada: dataFormatada,
+            dataMarcada: dataFormatada,
             cliente: {
               cpf: cliente.cpf // Assume que o objeto cliente tem uma propriedade cpf
             }

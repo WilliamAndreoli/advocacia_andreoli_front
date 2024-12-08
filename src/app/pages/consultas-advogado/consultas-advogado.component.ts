@@ -65,7 +65,7 @@ export class ConsultasAdvogadoComponent implements OnInit{
     this.loading = true;
     this.consultaService.getAllConsultasPageable(this.currentPage, this.pageSize).subscribe({
       next: (response) => {
-        //console.log(response)
+        console.log(response)
         this.consultas = response.content;
         this.totalPages = response.totalPages;
         this.totalElements = response.totalElements;
