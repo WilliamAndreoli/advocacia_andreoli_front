@@ -73,4 +73,9 @@ export class ConsultaService {
     return this.HttpClient.put<Consulta>(`${this.apiUrl}/pagar/${id}`, consulta, { headers })
   }
 
+  tornarConsultaInativa(id: number): Observable<Consulta> {
+    const headers = this.getHeaders();
+    return this.HttpClient.put<Consulta>(`${this.apiUrl}/inativar/${id}`, {}, { headers })
+  }
+
 }
