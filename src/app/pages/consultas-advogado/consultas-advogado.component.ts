@@ -146,7 +146,12 @@ export class ConsultasAdvogadoComponent implements OnInit{
   deletarConsulta(idConsulta: number) {
     this.consultaService.tornarConsultaInativa(idConsulta).subscribe({
       next: (response) => {
-        this.toastService.success("Consulta deletada com Sucesso!")
+        this.toastService.success("Consulta deletada com Sucesso!");
+        setTimeout(() => {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/consultas-advogado']);
+          });
+        }, 2000);
       },
       error: (error) => {
         this.toastService.error("Erro ao deletar Consulta");
@@ -157,7 +162,7 @@ export class ConsultasAdvogadoComponent implements OnInit{
   concluirConsulta(id: number) {
     this.consultaService.concluirConsulta(id).subscribe({
       next: (response) => {
-        console.log(response);
+        //console.log(response);
         this.toastService.success("Consulta concluida com sucesso!");
         setTimeout(() => {
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
