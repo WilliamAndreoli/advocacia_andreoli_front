@@ -43,4 +43,8 @@ export class ConfigContaComponent implements OnInit{
     this.router.navigate(['/advogado']);
   }
 
+  alterarSenha() {
+    this.router.navigate(["/alterar-senha"]);
+  }
+
 }

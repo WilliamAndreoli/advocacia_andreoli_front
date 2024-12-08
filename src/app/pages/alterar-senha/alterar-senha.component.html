@@ -1,0 +1,27 @@
+<section id="altera-senha">
+    <div class="container">
+        <div class="row">
+            <div id="usuarioContainer" class="col-md-12">
+                <div>
+                    <h2 class="mb-3 text-dark">Altere sua Senha:</h2>
+                </div>
+                <form [formGroup]="usuarioForm">
+                    <div class="mb-3">
+                      <label for="inputPassword" class="form-label mt-3">Senha</label>
+                      <input type="password" placeholder="Digite a nova senha" class="form-control mb-2" id="inputPassword" formControlName="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label mt-3">Digite a senha novamente</label>
+                        <input type="password" placeholder="Digite a senha novamente" class="form-control mb-2" id="inputPassword" formControlName="confirmPassword">
+                      </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-warning" (click)="alterarSenha()">Alterar a Senha</button>
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <a type="submit" href="/config-conta" class="btn btn-warning" >Cancelar</a>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>

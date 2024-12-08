@@ -49,7 +49,7 @@ export class CriarUsuarioComponent implements OnInit{
   }
   
   onSubmit() {
-    console.log('Método chamado');
+    //console.log('Método chamado');
     if (this.usuarioForm.valid) {
       const formValues = this.usuarioForm.value;
 

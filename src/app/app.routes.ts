@@ -26,6 +26,7 @@ import { ConsultaAdvogadoDetailsComponent } from './pages/consulta-advogado-deta
 import { ConsultaEdicaoComponent } from './pages/consulta-edicao/consulta-edicao.component';
 import { ClienteAgendarConsultaComponent } from './pages/cliente-agendar-consulta/cliente-agendar-consulta.component';
 import { ConfigContaComponent } from './pages/config-conta/config-conta.component';
+import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
 
 export const routes: Routes = [
     {
@@ -150,6 +151,11 @@ export const routes: Routes = [
     { 
         path: 'config-conta', 
         component: ConfigContaComponent,
+        canActivate: [authGuard]
+    },
+    { 
+        path: 'alterar-senha', 
+        component: AlterarSenhaComponent,
         canActivate: [authGuard]
     },
     { 

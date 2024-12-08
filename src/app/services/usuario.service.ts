@@ -65,4 +65,10 @@ export class UsuarioService {
 
     
   }
+
+  alteraSenha(username: string | null, usuario: any) {
+    const headers = this.getHeaders();
+
+    return this.HttpClient.put<Usuario>(`${this.apiUrl}/username/${username}`, usuario, { headers })
+  }
 }
