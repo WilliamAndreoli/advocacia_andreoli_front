@@ -20,3 +20,128 @@
 .text-dourado {
     color: #ffd82f;
 }
+
+/*Media Queries*/
+/* Extra small devices (portrait phones, less than 576px)*/
+/* No media query since this is the default in Bootstrap*/
+@media (min-width: 300px) { 
+
+    #home h1 {
+        text-align: center;
+        font-size: 1.1rem;
+        margin-left: 1rem;
+        margin-right: 2rem;
+    }
+
+    #home h2 {
+        text-align: center;
+    }
+    
+    #home p {
+        text-align: center;
+    }
+
+    #home img {
+        width: 300px;
+        align-self: center;
+    }
+
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { 
+
+    #home h1 {
+        text-align: start;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 2rem;
+    }
+
+    #home h2 {
+        text-align: start;
+    }
+    
+    #home p {
+        text-align: start;
+    }
+
+    #home img {
+        width: 400px;
+        margin-top: 0.6rem;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+
+    #home h1 {
+        text-align: start;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #home h2 {
+        text-align: start;
+    }
+    
+    #home p {
+        text-align: start;
+    }
+
+    #home img {
+        width: 300px;
+        margin-top: auto;
+    }
+
+ }
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    
+    #home h1 {
+        text-align: start;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #home h2 {
+        text-align: start;
+    }
+    
+    #home p {
+        text-align: start;
+    }
+
+    #home img {
+        width: 450px;
+        margin-top: auto;
+    }
+
+ }
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+
+    #home h1 {
+        text-align: start;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2rem;
+    }
+
+    #home h2 {
+        text-align: start;
+    }
+    
+    #home p {
+        text-align: start;
+    }
+
+    #home img {
+        width: 600px;
+        margin-top: auto;
+    }
+    
+ }
